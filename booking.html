@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book Order | HomeTaste Kitchen</title>
+<meta name="description" content="Book your home-cooked meal or event delivery.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
+      <div class="nav-links">
+        <a href="index.html" data-page="home">Home</a>
+        <a href="about.html" data-page="about">About</a>
+        <a href="menu.html" data-page="menu">Menu</a>
+        <a href="catering.html" data-page="catering">Catering</a>
+        <a href="gallery.html" data-page="gallery">Gallery</a>
+        <a href="booking.html" data-page="booking" class="active">Book Order</a>
+        <a href="contact.html" data-page="contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Order Now</a>
+        <a href="admin-login.html" class="btn btn-outline btn-sm">Login</a>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay"></div>
+  <div class="mobile-panel">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="menu.html">Menu</a>
+    <a href="catering.html">Catering</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="booking.html">Book Order</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin-login.html">Admin Login</a>
+    <a href="booking.html" class="btn btn-primary btn-block" style="margin-top:16px;text-align:center;">Order Now</a>
+  </div>
+  <section class="page-hero">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1526367790999-0150786686a2?w=1600&q=80" alt="Booking hero"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">HOME / BOOK ORDER</div>
+      <h1>Book Your Order</h1>
+      <p>Fill in your details below and we'll get cooking right away.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="calc-wrap">
+      <form id="bookingForm">
+        <div class="card" style="padding:36px;">
+          <h3 style="margin-bottom:24px;">Delivery & Order Details</h3>
+          <div class="form-row">
+            <div class="form-field"><label>Full Name *</label><input type="text" name="fullName" required placeholder="Your full name"></div>
+            <div class="form-field"><label>Phone Number *</label><input type="tel" name="phone" required placeholder="+91 98765 43210"></div>
+          </div>
+          <div class="form-field"><label>Email Address</label><input type="email" name="email" placeholder="you@example.com"></div>
+          <div class="form-field"><label>Delivery Address *</label><input type="text" name="address" required placeholder="House no., street, area, city"></div>
+          <div class="form-row">
+            <div class="form-field"><label>Event / Delivery Date *</label><input type="date" name="eventDate" required></div>
+            <div class="form-field"><label>Number Of Guests</label><input type="number" name="guests" min="1" placeholder="e.g. 4"></div>
+          </div>
+          <div class="form-field"><label>Special Instructions</label><textarea name="notes" rows="4" placeholder="Spice level, allergies, packaging preferences…"></textarea></div>
+          <div style="display:flex;gap:14px;">
+            <button type="submit" class="btn btn-primary" style="flex:1;">Confirm Booking</button>
+            <button type="button" id="resetBooking" class="btn btn-outline" style="flex:1;">Reset</button>
+          </div>
+        </div>
+      </form>
+
+      <div class="summary-box">
+        <h4 style="margin-bottom:20px;">Live Order Summary</h4>
+        <div id="orderSummary"></div>
+        <div class="summary-total"><span>Estimated Total</span><span id="orderTotal">₹0</span></div>
+        <p style="font-size:.8rem;color:var(--brown-soft);margin-top:16px;">Add dishes from the <a href="menu.html" style="color:var(--green);font-weight:600;">Menu page</a> to see them here before confirming.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
+        <p>Homemade meals, cloud-kitchen convenience, and premium catering — cooked fresh daily with love, from our kitchen to your table.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="menu.html">Our Menu</a></li>
+          <li><a href="catering.html">Catering</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="booking.html">Book Order</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><i class="fa-solid fa-phone"></i>&nbsp; +91 98765 43210</li>
+          <li><i class="fa-solid fa-envelope"></i>&nbsp; hello@hometastekitchen.in</li>
+          <li><i class="fa-solid fa-location-dot"></i>&nbsp; 24 Green Avenue, Chennai</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 HomeTaste Kitchen. All rights reserved. Made with love in our home kitchen.</p>
+  </footer>
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <script src="google-sheets.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Catering | HomeTaste Kitchen</title>
+<meta name="description" content="Catering packages and live price calculator for every event.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
+      <div class="nav-links">
+        <a href="index.html" data-page="home">Home</a>
+        <a href="about.html" data-page="about">About</a>
+        <a href="menu.html" data-page="menu">Menu</a>
+        <a href="catering.html" data-page="catering" class="active">Catering</a>
+        <a href="gallery.html" data-page="gallery">Gallery</a>
+        <a href="booking.html" data-page="booking">Book Order</a>
+        <a href="contact.html" data-page="contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Order Now</a>
+        <a href="admin-login.html" class="btn btn-outline btn-sm">Login</a>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay"></div>
+  <div class="mobile-panel">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="menu.html">Menu</a>
+    <a href="catering.html">Catering</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="booking.html">Book Order</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin-login.html">Admin Login</a>
+    <a href="booking.html" class="btn btn-primary btn-block" style="margin-top:16px;text-align:center;">Order Now</a>
+  </div>
+  <section class="page-hero">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=1600&q=80" alt="Catering buffet"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">HOME / CATERING</div>
+      <h1>Catering For Every Celebration</h1>
+      <p>Weddings, birthdays, corporate events, and more — planned around your guests and your budget.</p>
+    </div>
+  </section>
+
+  <!-- EVENT TYPES -->
+  <section class="section">
+    <span class="eyebrow center" style="display:block;text-align:center;">Event Types</span>
+    <h2 class="section-title center">What Are We Celebrating?</h2>
+    <div class="grid grid-4 mt-lg" id="eventTypeGrid">
+      <div class="card icon-card reveal" style="text-align:center;"><div class="icon-circle" style="margin:0 auto 14px;"><i class="fa-solid fa-cake-candles"></i></div><h4>Birthday</h4></div>
+      <div class="card icon-card reveal" style="text-align:center;"><div class="icon-circle" style="margin:0 auto 14px;"><i class="fa-solid fa-rings-wedding"></i></div><h4>Wedding</h4></div>
+      <div class="card icon-card reveal" style="text-align:center;"><div class="icon-circle" style="margin:0 auto 14px;"><i class="fa-solid fa-briefcase"></i></div><h4>Corporate</h4></div>
+      <div class="card icon-card reveal" style="text-align:center;"><div class="icon-circle" style="margin:0 auto 14px;"><i class="fa-solid fa-people-roof"></i></div><h4>Family Function</h4></div>
+      <div class="card icon-card reveal" style="text-align:center;"><div class="icon-circle" style="margin:0 auto 14px;"><i class="fa-solid fa-baby"></i></div><h4>Baby Shower</h4></div>
+      <div class="card icon-card reveal" style="text-align:center;"><div class="icon-circle" style="margin:0 auto 14px;"><i class="fa-solid fa-house-chimney"></i></div><h4>Housewarming</h4></div>
+    </div>
+  </section>
+
+  <!-- PACKAGES -->
+  <section class="section" style="background:#fff;">
+    <span class="eyebrow center" style="display:block;text-align:center;">Packages</span>
+    <h2 class="section-title center">Choose Your Package</h2>
+    <div class="grid grid-3 mt-lg">
+      <div class="card pkg-card reveal">
+        <h3>Silver</h3><p style="color:var(--brown-soft);font-size:.86rem;">Simple & elegant</p>
+        <div class="pkg-price">₹499 <span>/ guest</span></div>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> 2 starters, 2 main courses</li>
+          <li><i class="fa-solid fa-check"></i> 1 dessert, unlimited soft drinks</li>
+          <li><i class="fa-solid fa-check"></i> Standard buffet setup</li>
+        </ul>
+        <a href="#calculator" class="btn btn-outline btn-block">Select Silver</a>
+      </div>
+      <div class="card pkg-card featured reveal">
+        <span class="pkg-tag">Most Popular</span>
+        <h3>Gold</h3><p style="color:var(--brown-soft);font-size:.86rem;">Our most-loved package</p>
+        <div class="pkg-price">₹799 <span>/ guest</span></div>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> 3 starters, 3 main courses</li>
+          <li><i class="fa-solid fa-check"></i> 2 desserts, mocktail counter</li>
+          <li><i class="fa-solid fa-check"></i> Live counter + premium setup</li>
+        </ul>
+        <a href="#calculator" class="btn btn-primary btn-block">Select Gold</a>
+      </div>
+      <div class="card pkg-card reveal">
+        <h3>Platinum</h3><p style="color:var(--brown-soft);font-size:.86rem;">The full experience</p>
+        <div class="pkg-price">₹1,199 <span>/ guest</span></div>
+        <ul>
+          <li><i class="fa-solid fa-check"></i> 5 starters, 4 main courses</li>
+          <li><i class="fa-solid fa-check"></i> Dessert counter + live stations</li>
+          <li><i class="fa-solid fa-check"></i> Premium decor & dedicated staff</li>
+        </ul>
+        <a href="#calculator" class="btn btn-outline btn-block">Select Platinum</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LIVE CALCULATOR + MENU BUILDER -->
+  <section class="section" id="calculator">
+    <span class="eyebrow center" style="display:block;text-align:center;">Plan & Price</span>
+    <h2 class="section-title center">Live Catering Price Calculator</h2>
+    <p class="section-sub center">Adjust event type, guest count, and package to see your estimate update instantly.</p>
+
+    <div class="calc-wrap mt-lg" id="cateringCalc">
+      <div class="calc-panel">
+        <div class="builder-group">
+          <h4>Event Type</h4>
+          <div class="pill-select">
+            <div class="pill-option event-option active" data-value="Birthday">Birthday</div>
+            <div class="pill-option event-option" data-value="Wedding">Wedding</div>
+            <div class="pill-option event-option" data-value="Corporate">Corporate</div>
+            <div class="pill-option event-option" data-value="Family Function">Family Fn.</div>
+            <div class="pill-option event-option" data-value="Baby Shower">Baby Shower</div>
+            <div class="pill-option event-option" data-value="Housewarming">Housewarming</div>
+          </div>
+        </div>
+
+        <div class="builder-group">
+          <h4>Guest Count</h4>
+          <div class="range-row">
+            <input type="range" id="guestSlider" min="20" max="500" value="50" step="5">
+            <span class="range-val" id="guestVal">50</span>
+          </div>
+        </div>
+
+        <div class="builder-group">
+          <h4>Package</h4>
+          <div class="pill-select">
+            <div class="pill-option pkg-option active" data-value="Silver">Silver</div>
+            <div class="pill-option pkg-option" data-value="Gold">Gold</div>
+            <div class="pill-option pkg-option" data-value="Platinum">Platinum</div>
+          </div>
+        </div>
+
+        <h4 style="font-family:var(--font-head);margin-bottom:14px;">Interactive Menu Builder — Add Extras</h4>
+        <div class="builder-group">
+          <h4 style="font-size:.82rem;color:var(--brown-soft);">Starters</h4>
+          <label class="builder-item"><span>Extra Paneer Tikka Skewers</span><input type="checkbox" class="builder-check" data-item="paneer-skewers" data-price="40"></label>
+          <label class="builder-item"><span>Extra Chicken Seekh Kebab</span><input type="checkbox" class="builder-check" data-item="seekh-kebab" data-price="55"></label>
+        </div>
+        <div class="builder-group">
+          <h4 style="font-size:.82rem;color:var(--brown-soft);">Main Course</h4>
+          <label class="builder-item"><span>Extra Biryani Station</span><input type="checkbox" class="builder-check" data-item="biryani-station" data-price="70"></label>
+          <label class="builder-item"><span>Extra Curry Live Counter</span><input type="checkbox" class="builder-check" data-item="curry-station" data-price="50"></label>
+        </div>
+        <div class="builder-group">
+          <h4 style="font-size:.82rem;color:var(--brown-soft);">Desserts</h4>
+          <label class="builder-item"><span>Ice Cream Live Counter</span><input type="checkbox" class="builder-check" data-item="icecream-counter" data-price="45"></label>
+        </div>
+        <div class="builder-group">
+          <h4 style="font-size:.82rem;color:var(--brown-soft);">Drinks</h4>
+          <label class="builder-item"><span>Mocktail Bar</span><input type="checkbox" class="builder-check" data-item="mocktail-bar" data-price="60"></label>
+        </div>
+      </div>
+
+      <div class="estimate-box">
+        <h4>Estimated Cost</h4>
+        <div class="amount" id="estAmount">₹0</div>
+        <div class="estimate-line"><span>Event Type</span><span id="estEvent">—</span></div>
+        <div class="estimate-line"><span>Guests</span><span id="estGuests">—</span></div>
+        <div class="estimate-line"><span>Package</span><span id="estPkg">—</span></div>
+        <div class="estimate-line"><span>Add-ons Total</span><span id="estAddons">₹0</span></div>
+        <a href="#bookCatering" class="btn btn-primary btn-block" style="margin-top:26px;">Book Catering</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOOKING FORM -->
+  <section class="section" id="bookCatering" style="background:#fff;">
+    <span class="eyebrow center" style="display:block;text-align:center;">Reserve Your Date</span>
+    <h2 class="section-title center">Catering Booking Form</h2>
+    <form id="cateringBookingForm" style="max-width:720px;margin:36px auto 0;">
+      <input type="hidden" id="cateringHiddenTotal">
+      <div class="form-row">
+        <div class="form-field"><label>Full Name</label><input type="text" name="fullName" required placeholder="Your name"></div>
+        <div class="form-field"><label>Phone Number</label><input type="tel" name="phone" required placeholder="+91 98765 43210"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Event Date</label><input type="date" name="eventDate" required></div>
+        <div class="form-field"><label>Guest Count</label><input type="number" name="guestCount" min="20" placeholder="e.g. 50"></div>
+      </div>
+      <div class="form-field"><label>Venue / Address</label><input type="text" name="address" placeholder="Where should we deliver / set up?"></div>
+      <div class="form-field"><label>Additional Notes</label><textarea name="notes" rows="4" placeholder="Tell us more about your event…"></textarea></div>
+      <button type="submit" class="btn btn-primary btn-block">Book Catering</button>
+    </form>
+  </section>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
+        <p>Homemade meals, cloud-kitchen convenience, and premium catering — cooked fresh daily with love, from our kitchen to your table.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="menu.html">Our Menu</a></li>
+          <li><a href="catering.html">Catering</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="booking.html">Book Order</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><i class="fa-solid fa-phone"></i>&nbsp; +91 98765 43210</li>
+          <li><i class="fa-solid fa-envelope"></i>&nbsp; hello@hometastekitchen.in</li>
+          <li><i class="fa-solid fa-location-dot"></i>&nbsp; 24 Green Avenue, Chennai</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 HomeTaste Kitchen. All rights reserved. Made with love in our home kitchen.</p>
+  </footer>
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <script src="google-sheets.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>

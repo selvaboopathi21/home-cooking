@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gallery | HomeTaste Kitchen</title>
+<meta name="description" content="Photos from our kitchen, meals, and catering events.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
+      <div class="nav-links">
+        <a href="index.html" data-page="home">Home</a>
+        <a href="about.html" data-page="about">About</a>
+        <a href="menu.html" data-page="menu">Menu</a>
+        <a href="catering.html" data-page="catering">Catering</a>
+        <a href="gallery.html" data-page="gallery" class="active">Gallery</a>
+        <a href="booking.html" data-page="booking">Book Order</a>
+        <a href="contact.html" data-page="contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Order Now</a>
+        <a href="admin-login.html" class="btn btn-outline btn-sm">Login</a>
+        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay"></div>
+  <div class="mobile-panel">
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="menu.html">Menu</a>
+    <a href="catering.html">Catering</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="booking.html">Book Order</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin-login.html">Admin Login</a>
+    <a href="booking.html" class="btn btn-primary btn-block" style="margin-top:16px;text-align:center;">Order Now</a>
+  </div>
+  <section class="page-hero">
+    <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=1600&q=80" alt="Gallery hero"></div>
+    <div class="page-hero-content">
+      <div class="breadcrumb">HOME / GALLERY</div>
+      <h1>A Peek Into Our Kitchen</h1>
+      <p>Home cooking, catering events, and everything in between.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="chip-group gallery-filter center" style="justify-content:center;margin-bottom:40px;">
+      <button class="chip active" data-cat="all">All</button>
+      <button class="chip" data-cat="kitchen">Home Kitchen</button>
+      <button class="chip" data-cat="meals">Fresh Meals</button>
+      <button class="chip" data-cat="events">Catering Events</button>
+      <button class="chip" data-cat="buffet">Buffet Setup</button>
+      <button class="chip" data-cat="dessert">Dessert Counter</button>
+      <button class="chip" data-cat="moments">Customer Moments</button>
+      <button class="chip" data-cat="behind">Behind The Scenes</button>
+    </div>
+
+    <div class="masonry">
+      <div class="g-item" data-cat="kitchen"><img src="https://images.unsplash.com/photo-1556910636-273bc255cb1e?w=500&q=80" alt="Home Kitchen"><div class="g-overlay">Home Kitchen</div></div>
+      <div class="g-item" data-cat="meals"><img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=500&q=80" alt="Fresh Meals"><div class="g-overlay">Fresh Meals</div></div>
+      <div class="g-item" data-cat="events"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=500&q=80" alt="Catering Events"><div class="g-overlay">Catering Events</div></div>
+      <div class="g-item" data-cat="buffet"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=500&q=80" alt="Buffet Setup"><div class="g-overlay">Buffet Setup</div></div>
+      <div class="g-item" data-cat="dessert"><img src="https://images.unsplash.com/photo-1601303516361-f2b1ba0d95b2?w=500&q=80" alt="Dessert Counter"><div class="g-overlay">Dessert Counter</div></div>
+      <div class="g-item" data-cat="moments"><img src="https://images.unsplash.com/photo-1529543544282-ea669407fca3?w=500&q=80" alt="Customer Moments"><div class="g-overlay">Customer Moments</div></div>
+      <div class="g-item" data-cat="behind"><img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=500&q=80" alt="Behind The Scenes"><div class="g-overlay">Behind The Scenes</div></div>
+      <div class="g-item" data-cat="kitchen"><img src="https://images.unsplash.com/photo-1556909212-d5b604d0c90d?w=500&q=80" alt="Home Kitchen"><div class="g-overlay">Home Kitchen</div></div>
+      <div class="g-item" data-cat="meals"><img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&q=80" alt="Fresh Meals"><div class="g-overlay">Fresh Meals</div></div>
+      <div class="g-item" data-cat="events"><img src="https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?w=500&q=80" alt="Catering Events"><div class="g-overlay">Catering Events</div></div>
+      <div class="g-item" data-cat="buffet"><img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=500&q=80" alt="Buffet Setup"><div class="g-overlay">Buffet Setup</div></div>
+      <div class="g-item" data-cat="dessert"><img src="https://images.unsplash.com/photo-1587049633312-d628ae50a8ae?w=500&q=80" alt="Dessert Counter"><div class="g-overlay">Dessert Counter</div></div>
+      <div class="g-item" data-cat="moments"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=500&q=80" alt="Customer Moments"><div class="g-overlay">Customer Moments</div></div>
+      <div class="g-item" data-cat="behind"><img src="https://images.unsplash.com/photo-1607330289024-1535c6b4e1c1?w=500&q=80" alt="Behind The Scenes"><div class="g-overlay">Behind The Scenes</div></div>
+      <div class="g-item" data-cat="kitchen"><img src="https://images.unsplash.com/photo-1581299894007-aaa50297cf16?w=500&q=80" alt="Home Kitchen"><div class="g-overlay">Home Kitchen</div></div>
+      <div class="g-item" data-cat="meals"><img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&q=80" alt="Fresh Meals"><div class="g-overlay">Fresh Meals</div></div>
+    </div>
+  </section>
+
+  <div class="lightbox">
+    <span class="lightbox-close"><i class="fa-solid fa-xmark"></i></span>
+    <img src="" alt="Enlarged view">
+  </div>
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
+        <p>Homemade meals, cloud-kitchen convenience, and premium catering — cooked fresh daily with love, from our kitchen to your table.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="menu.html">Our Menu</a></li>
+          <li><a href="catering.html">Catering</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="booking.html">Book Order</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><i class="fa-solid fa-phone"></i>&nbsp; +91 98765 43210</li>
+          <li><i class="fa-solid fa-envelope"></i>&nbsp; hello@hometastekitchen.in</li>
+          <li><i class="fa-solid fa-location-dot"></i>&nbsp; 24 Green Avenue, Chennai</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 HomeTaste Kitchen. All rights reserved. Made with love in our home kitchen.</p>
+  </footer>
+  <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+  <script src="google-sheets.js"></script>
+  <script src="script.js"></script>
+
+</body>
+</html>
