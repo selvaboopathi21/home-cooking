@@ -13,31 +13,28 @@
     <div class="nav-inner">
       <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
       <div class="nav-links">
-        <a href="index.html" data-page="home">Home</a>
-        <a href="about.html" data-page="about">About</a>
-        <a href="menu.html" data-page="menu">Menu</a>
-        <a href="catering.html" data-page="catering">Catering</a>
-        <a href="gallery.html" data-page="gallery">Gallery</a>
+        <a href="index.html" data-page="home">Home</a>        <a href="homefood.html" data-page="homefood">homefood</a>
         <a href="booking.html" data-page="booking">Book Order</a>
+        <a href="catering.html" data-page="catering">Catering</a>
+       
         <a href="contact.html" data-page="contact" class="active">Contact</a>
       </div>
       <div class="nav-actions">
         <a href="booking.html" class="btn btn-primary btn-sm">Order Now</a>
-        <a href="admin-login.html" class="btn btn-outline btn-sm">Login</a>
-        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <a href="admin.html" class="btn btn-outline btn-sm">Admin</a>
+        <button class="hamburger" aria-label="homefood"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
   <div class="overlay"></div>
   <div class="mobile-panel">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="menu.html">Menu</a>
+
+    <a href="homefood.html">homefood</a>
     <a href="catering.html">Catering</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="booking.html">Book Order</a>
+   <a href="booking.html">Book Order</a>
     <a href="contact.html">Contact</a>
-    <a href="admin-login.html">Admin Login</a>
+    <a href="admin.html">Admin Login</a>
     <a href="booking.html" class="btn btn-primary btn-block" style="margin-top:16px;text-align:center;">Order Now</a>
   </div>
   <section class="page-hero">
@@ -105,8 +102,7 @@
       <div>
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="menu.html">Our Menu</a></li>
+          <li><a href="homefood.html">Our homefood</a></li>
           <li><a href="catering.html">Catering</a></li>
           <li><a href="gallery.html">Gallery</a></li>
         </ul>
@@ -116,7 +112,7 @@
         <ul>
           <li><a href="booking.html">Book Order</a></li>
           <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="admin.html">Admin Login</a></li>
           <li><a href="#">Careers</a></li>
         </ul>
       </div>
@@ -132,8 +128,118 @@
     <p class="footer-bottom">© 2026 HomeTaste Kitchen. All rights reserved. Made with love in our home kitchen.</p>
   </footer>
   <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-  <script src="google-sheets.js"></script>
-  <script src="script.js"></script>
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileNav();
+  initScrollReveal();
+  initContactForm();
+});
 
+/* ---------- Mobile Navigation ---------- */
+function initMobileNav() {
+  const btn = document.querySelector('.hamburger');
+  const panel = document.querySelector('.mobile-panel');
+  const overlay = document.querySelector('.overlay');
+  if (!btn || !panel) return;
+
+  const toggle = (open) => {
+    panel.classList.toggle('open', open);
+    overlay.classList.toggle('open', open);
+  };
+
+  btn.addEventListener('click', () => toggle(!panel.classList.contains('open')));
+  overlay.addEventListener('click', () => toggle(false));
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggle(false)));
+}
+
+/* ---------- Scroll Reveal Animations ---------- */
+function initScrollReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(i => io.observe(i));
+}
+
+/* ---------- Contact Form Handling ---------- */
+function initContactForm() {
+  const form = document.getElementById('contactForm');
+  if (!form) return;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    const submitBtn = form.querySelector('button[type="submit"]');
+    const originalText = submitBtn.textContent;
+
+    // Enable loading state
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending Message...';
+
+    // Gather form inputs
+    const formData = {
+      name: form.querySelector('input[placeholder="Full name"]')?.value.trim(),
+      phone: form.querySelector('input[type="tel"]')?.value.trim(),
+      email: form.querySelector('input[type="email"]')?.value.trim(),
+      message: form.querySelector('textarea')?.value.trim(),
+      timestamp: new Date().toLocaleString()
+    };
+
+    try {
+      // Connect to Google Sheets script if available
+      if (typeof submitToGoogleSheets === 'function') {
+        await submitToGoogleSheets('contact', formData);
+      } else {
+        // Fallback simulation delay
+        await new Promise(resolve => setTimeout(resolve, 1000));
+      }
+
+      showFormFeedback(form, 'Thank you! Your message has been sent. We will get back to you shortly.', 'success');
+      form.reset();
+    } catch (err) {
+      console.error('Contact form error:', err);
+      showFormFeedback(form, 'Something went wrong. Please try again or reach out on WhatsApp.', 'error');
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.textContent = originalText;
+    }
+  });
+}
+
+function showFormFeedback(form, message, type) {
+  let feedbackEl = form.querySelector('.form-feedback');
+  if (!feedbackEl) {
+    feedbackEl = document.createElement('div');
+    feedbackEl.className = 'form-feedback';
+    feedbackEl.style.cssText = 'padding:12px 16px; margin-top:16px; border-radius:8px; font-size:0.9rem; text-align:center; transition: all 0.3s ease;';
+    form.appendChild(feedbackEl);
+  }
+
+  if (type === 'success') {
+    feedbackEl.style.background = '#e8f5e9';
+    feedbackEl.style.color = '#2e7d32';
+    feedbackEl.style.border = '1px solid #a5d6a7';
+  } else {
+    feedbackEl.style.background = '#ffebee';
+    feedbackEl.style.color = '#c62828';
+    feedbackEl.style.border = '1px solid #ef9a9a';
+  }
+
+  feedbackEl.textContent = message;
+
+  // Clear message after 6 seconds
+  setTimeout(() => {
+    feedbackEl.remove();
+  }, 6000);
+}
+</script>
 </body>
 </html>

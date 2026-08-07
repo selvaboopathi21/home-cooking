@@ -14,30 +14,27 @@
       <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
       <div class="nav-links">
         <a href="index.html" data-page="home">Home</a>
-        <a href="about.html" data-page="about">About</a>
-        <a href="menu.html" data-page="menu">Menu</a>
+        <a href="homefood.html" data-page="homefood">homefood</a>
+         <a href="booking.html" data-page="booking" class="active">Book Order</a>
         <a href="catering.html" data-page="catering">Catering</a>
-        <a href="gallery.html" data-page="gallery">Gallery</a>
-        <a href="booking.html" data-page="booking" class="active">Book Order</a>
+     
         <a href="contact.html" data-page="contact">Contact</a>
       </div>
       <div class="nav-actions">
         <a href="booking.html" class="btn btn-primary btn-sm">Order Now</a>
-        <a href="admin-login.html" class="btn btn-outline btn-sm">Login</a>
-        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <a href="admin.html" class="btn btn-outline btn-sm">Admin</a>
+        <button class="hamburger" aria-label="homefood"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
   <div class="overlay"></div>
   <div class="mobile-panel">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="menu.html">Menu</a>
+    <a href="homefood.html">homefood</a>
     <a href="catering.html">Catering</a>
-    <a href="gallery.html">Gallery</a>
     <a href="booking.html">Book Order</a>
     <a href="contact.html">Contact</a>
-    <a href="admin-login.html">Admin Login</a>
+    <a href="admin.html">Admin Login</a>
     <a href="booking.html" class="btn btn-primary btn-block" style="margin-top:16px;text-align:center;">Order Now</a>
   </div>
   <section class="page-hero">
@@ -76,7 +73,7 @@
         <h4 style="margin-bottom:20px;">Live Order Summary</h4>
         <div id="orderSummary"></div>
         <div class="summary-total"><span>Estimated Total</span><span id="orderTotal">₹0</span></div>
-        <p style="font-size:.8rem;color:var(--brown-soft);margin-top:16px;">Add dishes from the <a href="menu.html" style="color:var(--green);font-weight:600;">Menu page</a> to see them here before confirming.</p>
+        <p style="font-size:.8rem;color:var(--brown-soft);margin-top:16px;">Add dishes from the <a href="homefood.html" style="color:var(--green);font-weight:600;">homefood page</a> to see them here before confirming.</p>
       </div>
     </div>
   </section>
@@ -96,8 +93,8 @@
       <div>
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="menu.html">Our Menu</a></li>
+
+          <li><a href="homefood.html">Our homefood</a></li>
           <li><a href="catering.html">Catering</a></li>
           <li><a href="gallery.html">Gallery</a></li>
         </ul>
@@ -107,7 +104,7 @@
         <ul>
           <li><a href="booking.html">Book Order</a></li>
           <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="admin.html">Admin Login</a></li>
           <li><a href="#">Careers</a></li>
         </ul>
       </div>
@@ -123,8 +120,180 @@
     <p class="footer-bottom">© 2026 HomeTaste Kitchen. All rights reserved. Made with love in our home kitchen.</p>
   </footer>
   <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
-  <script src="google-sheets.js"></script>
-  <script src="script.js"></script>
+
+
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileNav();
+  initScrollReveal();
+  initBookingPage();
+  updateCartBadge();
+});
+
+/* ---------- Mobile Navigation ---------- */
+function initMobileNav() {
+  const btn = document.querySelector('.hamburger');
+  const panel = document.querySelector('.mobile-panel');
+  const overlay = document.querySelector('.overlay');
+  if (!btn || !panel) return;
+
+  const toggle = (open) => {
+    panel.classList.toggle('open', open);
+    overlay.classList.toggle('open', open);
+  };
+
+  btn.addEventListener('click', () => toggle(!panel.classList.contains('open')));
+  overlay.addEventListener('click', () => toggle(false));
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggle(false)));
+}
+
+/* ---------- Scroll Animations ---------- */
+function initScrollReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(i => io.observe(i));
+}
+
+/* ---------- Booking Page Cart Rendering ---------- */
+function initBookingPage() {
+  renderOrderSummary();
+
+  // Reset button logic
+  const resetBtn = document.getElementById('resetBooking');
+  if (resetBtn) {
+    resetBtn.addEventListener('click', () => {
+      document.getElementById('bookingForm')?.reset();
+      localStorage.removeItem('htk_cart');
+      renderOrderSummary();
+      updateCartBadge();
+      showToast('Form and cart cleared!');
+    });
+  }
+
+  // Booking submit logic
+  const bookingForm = document.getElementById('bookingForm');
+  if (bookingForm) {
+    bookingForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const cart = JSON.parse(localStorage.getItem('htk_cart') || '[]');
+      if (cart.length === 0) {
+        showToast('Please add items to your cart before confirming!', true);
+        return;
+      }
+      showToast('Order submitted successfully! We will contact you soon.');
+      bookingForm.reset();
+      localStorage.removeItem('htk_cart');
+      renderOrderSummary();
+      updateCartBadge();
+    });
+  }
+}
+
+/* ---------- Render Order Summary & Total ---------- */
+function renderOrderSummary() {
+  const summaryContainer = document.getElementById('orderSummary');
+  const totalEl = document.getElementById('orderTotal');
+  if (!summaryContainer) return;
+
+  const cart = JSON.parse(localStorage.getItem('htk_cart') || '[]');
+
+  if (cart.length === 0) {
+    summaryContainer.innerHTML = '<p style="color:#777; font-size:.9rem;">Your cart is empty.</p>';
+    if (totalEl) totalEl.textContent = '₹0';
+    return;
+  }
+
+  // Group duplicate items to display quantities
+  const itemMap = {};
+  cart.forEach(item => {
+    if (itemMap[item.name]) {
+      itemMap[item.name].qty += 1;
+    } else {
+      itemMap[item.name] = { price: item.price, qty: 1 };
+    }
+  });
+
+  let html = '<ul style="list-style:none; padding:0; margin:0 0 16px 0;">';
+  let total = 0;
+
+  Object.keys(itemMap).forEach(name => {
+    const item = itemMap[name];
+    const itemTotal = item.price * item.qty;
+    total += itemTotal;
+
+    html += `
+      <li style="display:flex; justify-style:space-between; align-items:center; margin-bottom:10px; font-size:.92rem;">
+        <div>
+          <strong>${name}</strong> <span style="color:#888;">x${item.qty}</span>
+        </div>
+        <div style="display:flex; align-items:center; gap:10px;">
+          <span>₹${itemTotal}</span>
+          <button type="button" onclick="removeItemFromCart('${name}')" style="background:none; border:none; color:#B0432C; cursor:pointer; font-size:.85rem;" title="Remove"><i class="fa-solid fa-trash"></i></button>
+        </div>
+      </li>
+    `;
+  });
+
+  html += '</ul>';
+  summaryContainer.innerHTML = html;
+
+  if (totalEl) {
+    totalEl.textContent = `₹${total.toLocaleString('en-IN')}`;
+  }
+}
+
+/* ---------- Cart Operations ---------- */
+function removeItemFromCart(itemName) {
+  let cart = JSON.parse(localStorage.getItem('htk_cart') || '[]');
+  const index = cart.findIndex(item => item.name === itemName);
+  if (index !== -1) {
+    cart.splice(index, 1);
+    localStorage.setItem('htk_cart', JSON.stringify(cart));
+    renderOrderSummary();
+    updateCartBadge();
+  }
+}
+
+function updateCartBadge() {
+  const cart = JSON.parse(localStorage.getItem('htk_cart') || '[]');
+  document.querySelectorAll('.cart-count').forEach(el => {
+    el.textContent = cart.length;
+  });
+}
+
+/* ---------- Toast Alert ---------- */
+function showToast(msg, isError = false) {
+  let toast = document.getElementById('htkToast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'htkToast';
+    toast.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:#3B2F2F;color:#fff;padding:16px 26px;border-radius:99px;font-family:Poppins,sans-serif;font-size:.88rem;font-weight:600;z-index:3000;opacity:0;transition:.35s;box-shadow:0 16px 40px rgba(0,0,0,.25);';
+    document.body.appendChild(toast);
+  }
+  toast.style.background = isError ? '#B0432C' : '#3D7A52';
+  toast.textContent = msg;
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateX(-50%) translateY(0)';
+  });
+  clearTimeout(toast._t);
+  toast._t = setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateX(-50%) translateY(20px)';
+  }, 3200);
+}
+</script>
 
 </body>
 </html>

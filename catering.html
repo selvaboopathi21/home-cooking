@@ -7,6 +7,127 @@
 <meta name="description" content="Catering packages and live price calculator for every event.">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+  /* Menu & Food Selection UI Enhancements */
+  .food-category-tabs {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .food-search-box {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid var(--border-color, #e0e0e0);
+    border-radius: 8px;
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+    background: #fff;
+  }
+  .food-menu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 12px;
+    max-height: 420px;
+    overflow-y: auto;
+    padding-right: 6px;
+    margin-bottom: 20px;
+  }
+  .food-item-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  .food-item-card:hover {
+    border-color: var(--primary-color, #c85a32);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  .food-item-card.selected {
+    border: 2px solid var(--primary-color, #c85a32);
+    background-color: rgba(200, 90, 50, 0.04);
+  }
+  .food-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+  }
+  .food-item-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #2d3748;
+    line-height: 1.3;
+  }
+  .food-item-badge {
+    font-size: 0.68rem;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .badge-veg { background: #e6f4ea; color: #137333; }
+  .badge-nonveg { background: #fce8e6; color: #c5221f; }
+  .food-item-price {
+    font-weight: 700;
+    color: var(--primary-color, #c85a32);
+    font-size: 0.9rem;
+  }
+  .food-item-add {
+    font-size: 0.8rem;
+    color: #718096;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-top: 8px;
+  }
+  .food-item-card.selected .food-item-add {
+    color: var(--primary-color, #c85a32);
+    font-weight: 600;
+  }
+  .selected-summary-box {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+  }
+  .selected-summary-title {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 8px;
+  }
+  .selected-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  .selected-tag {
+    background: #fff;
+    border: 1px solid #cbd5e1;
+    border-radius: 16px;
+    padding: 4px 10px;
+    font-size: 0.78rem;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .selected-tag i {
+    cursor: pointer;
+    color: #94a3b8;
+  }
+  .selected-tag i:hover {
+    color: #ef4444;
+  }
+</style>
 </head>
 <body>
   <nav class="navbar">
@@ -14,32 +135,29 @@
       <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
       <div class="nav-links">
         <a href="index.html" data-page="home">Home</a>
-        <a href="about.html" data-page="about">About</a>
-        <a href="menu.html" data-page="menu">Menu</a>
-        <a href="catering.html" data-page="catering" class="active">Catering</a>
-        <a href="gallery.html" data-page="gallery">Gallery</a>
+        <a href="homefood.html" data-page="homefood">homefood</a>
         <a href="booking.html" data-page="booking">Book Order</a>
+        <a href="catering.html" data-page="catering" class="active">Catering</a>
         <a href="contact.html" data-page="contact">Contact</a>
       </div>
       <div class="nav-actions">
         <a href="booking.html" class="btn btn-primary btn-sm">Order Now</a>
-        <a href="admin-login.html" class="btn btn-outline btn-sm">Login</a>
-        <button class="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+        <a href="admin.html" class="btn btn-outline btn-sm">Admin</a>
+        <button class="hamburger" aria-label="homefood"><span></span><span></span><span></span></button>
       </div>
     </div>
   </nav>
   <div class="overlay"></div>
   <div class="mobile-panel">
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="menu.html">Menu</a>
+    <a href="homefood.html">homefood</a>
     <a href="catering.html">Catering</a>
-    <a href="gallery.html">Gallery</a>
     <a href="booking.html">Book Order</a>
     <a href="contact.html">Contact</a>
-    <a href="admin-login.html">Admin Login</a>
+    <a href="admin.html">Admin Login</a>
     <a href="booking.html" class="btn btn-primary btn-block" style="margin-top:16px;text-align:center;">Order Now</a>
   </div>
+
   <section class="page-hero">
     <div class="page-hero-bg"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=1600&q=80" alt="Catering buffet"></div>
     <div class="page-hero-content">
@@ -64,49 +182,60 @@
   </section>
 
   <!-- PACKAGES -->
+  <!-- PACKAGES (SERVICE LEVEL TIERS) -->
   <section class="section" style="background:#fff;">
-    <span class="eyebrow center" style="display:block;text-align:center;">Packages</span>
-    <h2 class="section-title center">Choose Your Package</h2>
+    <span class="eyebrow center" style="display:block;text-align:center;">Service Packages</span>
+    <h2 class="section-title center">Choose Your Service Level</h2>
+    <p class="section-sub center">Select the setup & service tier that fits your event. Add your custom food items from the list below!</p>
+    
     <div class="grid grid-3 mt-lg">
       <div class="card pkg-card reveal">
-        <h3>Silver</h3><p style="color:var(--brown-soft);font-size:.86rem;">Simple & elegant</p>
-        <div class="pkg-price">₹499 <span>/ guest</span></div>
+        <h3>Silver</h3>
+        <p style="color:var(--brown-soft);font-size:.86rem;">Standard & Clean Setup</p>
+        <div class="pkg-price">₹499 <span>/ guest base</span></div>
         <ul>
-          <li><i class="fa-solid fa-check"></i> 2 starters, 2 main courses</li>
-          <li><i class="fa-solid fa-check"></i> 1 dessert, unlimited soft drinks</li>
-          <li><i class="fa-solid fa-check"></i> Standard buffet setup</li>
+          <li><i class="fa-solid fa-check"></i> Standard Stainless-Steel Buffet Setup</li>
+          <li><i class="fa-solid fa-check"></i> Basic Food Service Staff</li>
+          <li><i class="fa-solid fa-check"></i> Standard Cutlery & Dining Ware</li>
+          <li><i class="fa-solid fa-check"></i> Water & Hygiene Station Setup</li>
         </ul>
         <a href="#calculator" class="btn btn-outline btn-block">Select Silver</a>
       </div>
+
       <div class="card pkg-card featured reveal">
         <span class="pkg-tag">Most Popular</span>
-        <h3>Gold</h3><p style="color:var(--brown-soft);font-size:.86rem;">Our most-loved package</p>
-        <div class="pkg-price">₹799 <span>/ guest</span></div>
+        <h3>Gold</h3>
+        <p style="color:var(--brown-soft);font-size:.86rem;">Premium Event Experience</p>
+        <div class="pkg-price">₹799 <span>/ guest base</span></div>
         <ul>
-          <li><i class="fa-solid fa-check"></i> 3 starters, 3 main courses</li>
-          <li><i class="fa-solid fa-check"></i> 2 desserts, mocktail counter</li>
-          <li><i class="fa-solid fa-check"></i> Live counter + premium setup</li>
+          <li><i class="fa-solid fa-check"></i> Elegant Buffet with Ambient Lighting</li>
+          <li><i class="fa-solid fa-check"></i> Professional Uniformed Serving Crew</li>
+          <li><i class="fa-solid fa-check"></i> Fine Ceramic Crockery & Glassware</li>
+          <li><i class="fa-solid fa-check"></i> Dedicated Live Counter / Stall Setup</li>
         </ul>
         <a href="#calculator" class="btn btn-primary btn-block">Select Gold</a>
       </div>
+
       <div class="card pkg-card reveal">
-        <h3>Platinum</h3><p style="color:var(--brown-soft);font-size:.86rem;">The full experience</p>
-        <div class="pkg-price">₹1,199 <span>/ guest</span></div>
+        <h3>Platinum</h3>
+        <p style="color:var(--brown-soft);font-size:.86rem;">Luxury & VIP Hospitality</p>
+        <div class="pkg-price">₹1,199 <span>/ guest base</span></div>
         <ul>
-          <li><i class="fa-solid fa-check"></i> 5 starters, 4 main courses</li>
-          <li><i class="fa-solid fa-check"></i> Dessert counter + live stations</li>
-          <li><i class="fa-solid fa-check"></i> Premium decor & dedicated staff</li>
+          <li><i class="fa-solid fa-check"></i> Royal Luxury Buffet Counters & Floral Accent</li>
+          <li><i class="fa-solid fa-check"></i> Dedicated VIP Table Service & Captain</li>
+          <li><i class="fa-solid fa-check"></i> Premium Bone China & Heavy Cutlery</li>
+          <li><i class="fa-solid fa-check"></i> Multiple Live Counters + Complimentary Beeda Stall</li>
         </ul>
         <a href="#calculator" class="btn btn-outline btn-block">Select Platinum</a>
       </div>
     </div>
   </section>
 
-  <!-- LIVE CALCULATOR + MENU BUILDER -->
+  <!-- LIVE CALCULATOR + FOOD SELECTION BUILDER -->
   <section class="section" id="calculator">
     <span class="eyebrow center" style="display:block;text-align:center;">Plan & Price</span>
     <h2 class="section-title center">Live Catering Price Calculator</h2>
-    <p class="section-sub center">Adjust event type, guest count, and package to see your estimate update instantly.</p>
+    <p class="section-sub center">Select event type, guests, package, and custom South Indian foods to calculate your total cost instantly.</p>
 
     <div class="calc-wrap mt-lg" id="cateringCalc">
       <div class="calc-panel">
@@ -139,25 +268,34 @@
           </div>
         </div>
 
-        <h4 style="font-family:var(--font-head);margin-bottom:14px;">Interactive Menu Builder — Add Extras</h4>
-        <div class="builder-group">
-          <h4 style="font-size:.82rem;color:var(--brown-soft);">Starters</h4>
-          <label class="builder-item"><span>Extra Paneer Tikka Skewers</span><input type="checkbox" class="builder-check" data-item="paneer-skewers" data-price="40"></label>
-          <label class="builder-item"><span>Extra Chicken Seekh Kebab</span><input type="checkbox" class="builder-check" data-item="seekh-kebab" data-price="55"></label>
+        <!-- SOUTH INDIAN & MULTI-CUISINE FOOD SELECTION MODEL -->
+        <h4 style="font-family:var(--font-head);margin-bottom:12px;">Select Custom Food Items & Extras (105 Items Available)</h4>
+        
+        <input type="text" class="food-search-box" id="foodSearch" placeholder="Search foods (e.g. Biryani, Parotta, Halwa, Dosa, Sambar)...">
+
+        <div class="food-category-tabs">
+          <div class="pill-option food-cat-tab active" data-category="all">All Items</div>
+          <div class="pill-option food-cat-tab" data-category="welcome">Drinks & Sweets</div>
+          <div class="pill-option food-cat-tab" data-category="starters">Starters</div>
+          <div class="pill-option food-cat-tab" data-category="main">Rice & Tiffins</div>
+          <div class="pill-option food-cat-tab" data-category="curries">Curries & Gravies</div>
+          <div class="pill-option food-cat-tab" data-category="breads">Breads & Extras</div>
+          <div class="pill-option food-cat-tab" data-category="desserts">Desserts</div>
         </div>
-        <div class="builder-group">
-          <h4 style="font-size:.82rem;color:var(--brown-soft);">Main Course</h4>
-          <label class="builder-item"><span>Extra Biryani Station</span><input type="checkbox" class="builder-check" data-item="biryani-station" data-price="70"></label>
-          <label class="builder-item"><span>Extra Curry Live Counter</span><input type="checkbox" class="builder-check" data-item="curry-station" data-price="50"></label>
+
+        <!-- Dynamic Food Grid -->
+        <div class="food-menu-grid" id="foodMenuGrid">
+          <!-- Populated by JS -->
         </div>
-        <div class="builder-group">
-          <h4 style="font-size:.82rem;color:var(--brown-soft);">Desserts</h4>
-          <label class="builder-item"><span>Ice Cream Live Counter</span><input type="checkbox" class="builder-check" data-item="icecream-counter" data-price="45"></label>
+
+        <!-- Selected Food Items Summary -->
+        <div class="selected-summary-box">
+          <div class="selected-summary-title">Selected Food Additions (<span id="selectedCount">0</span> items):</div>
+          <div class="selected-tags" id="selectedFoodTags">
+            <span style="font-size:0.8rem;color:#94a3b8;">No extra food items selected yet. Click any food card above to add.</span>
+          </div>
         </div>
-        <div class="builder-group">
-          <h4 style="font-size:.82rem;color:var(--brown-soft);">Drinks</h4>
-          <label class="builder-item"><span>Mocktail Bar</span><input type="checkbox" class="builder-check" data-item="mocktail-bar" data-price="60"></label>
-        </div>
+
       </div>
 
       <div class="estimate-box">
@@ -165,8 +303,8 @@
         <div class="amount" id="estAmount">₹0</div>
         <div class="estimate-line"><span>Event Type</span><span id="estEvent">—</span></div>
         <div class="estimate-line"><span>Guests</span><span id="estGuests">—</span></div>
-        <div class="estimate-line"><span>Package</span><span id="estPkg">—</span></div>
-        <div class="estimate-line"><span>Add-ons Total</span><span id="estAddons">₹0</span></div>
+        <div class="estimate-line"><span>Base Package</span><span id="estPkg">—</span></div>
+        <div class="estimate-line"><span>Food Add-ons Total</span><span id="estAddons">₹0</span></div>
         <a href="#bookCatering" class="btn btn-primary btn-block" style="margin-top:26px;">Book Catering</a>
       </div>
     </div>
@@ -178,6 +316,7 @@
     <h2 class="section-title center">Catering Booking Form</h2>
     <form id="cateringBookingForm" style="max-width:720px;margin:36px auto 0;">
       <input type="hidden" id="cateringHiddenTotal">
+      <input type="hidden" id="cateringSelectedFoodsInput">
       <div class="form-row">
         <div class="form-field"><label>Full Name</label><input type="text" name="fullName" required placeholder="Your name"></div>
         <div class="form-field"><label>Phone Number</label><input type="tel" name="phone" required placeholder="+91 98765 43210"></div>
@@ -207,8 +346,7 @@
       <div>
         <h4>Quick Links</h4>
         <ul>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="menu.html">Our Menu</a></li>
+          <li><a href="homefood.html">Our homefood</a></li>
           <li><a href="catering.html">Catering</a></li>
           <li><a href="gallery.html">Gallery</a></li>
         </ul>
@@ -218,7 +356,7 @@
         <ul>
           <li><a href="booking.html">Book Order</a></li>
           <li><a href="contact.html">Contact Us</a></li>
-          <li><a href="admin-login.html">Admin Login</a></li>
+          <li><a href="admin.html">Admin Login</a></li>
           <li><a href="#">Careers</a></li>
         </ul>
       </div>
@@ -233,9 +371,397 @@
     </div>
     <p class="footer-bottom">© 2026 HomeTaste Kitchen. All rights reserved. Made with love in our home kitchen.</p>
   </footer>
+
   <a href="https://wa.me/919876543210" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
   <script src="google-sheets.js"></script>
   <script src="script.js"></script>
 
+  <!-- CATERING PAGE SPECIFIC SCRIPT -->
+  <script>
+    /* =========================================================
+       COMPLETE 105 SOUTH INDIAN & MULTI-CUISINE FOOD DATASET
+       ========================================================= */
+    const FOOD_DATABASE = [
+      // 1. Welcome Drinks & Sweets (15 Items)
+      { id: "sw01", name: "Elaneer Payasam", price: 35, category: "welcome", type: "veg" },
+      { id: "sw02", name: "Rose Milk with Sabja Seeds", price: 25, category: "welcome", type: "veg" },
+      { id: "sw03", name: "Fresh Nannari Sarbath", price: 20, category: "welcome", type: "veg" },
+      { id: "sw04", name: "Panakam (Traditional Jaggery Drink)", price: 15, category: "welcome", type: "veg" },
+      { id: "sw05", name: "Badam Milk (Hot / Cold)", price: 30, category: "welcome", type: "veg" },
+      { id: "sw06", name: "Special Tirunelveli Halwa", price: 35, category: "welcome", type: "veg" },
+      { id: "sw07", name: "Srivilliputhur Palkova", price: 30, category: "welcome", type: "veg" },
+      { id: "sw08", name: "Ghee Mysore Pak", price: 30, category: "welcome", type: "veg" },
+      { id: "sw09", name: "Hot Gulab Jamun", price: 25, category: "welcome", type: "veg" },
+      { id: "sw10", name: "Rava Kesari (Pineapple / Mango)", price: 20, category: "welcome", type: "veg" },
+      { id: "sw11", name: "Semiya Payasam", price: 25, category: "welcome", type: "veg" },
+      { id: "sw12", name: "Paruppu Payasam with Jaggery", price: 25, category: "welcome", type: "veg" },
+      { id: "sw13", name: "Jangiri / Laddu", price: 20, category: "welcome", type: "veg" },
+      { id: "sw14", name: "Dry Fruit Halwa", price: 35, category: "welcome", type: "veg" },
+      { id: "sw15", name: "Akkaravadisal", price: 30, category: "welcome", type: "veg" },
+
+      // 2. Starters & Snacks (15 Items)
+      { id: "st01", name: "Crispy Medu Vada", price: 15, category: "starters", type: "veg" },
+      { id: "st02", name: "Masala Vada / Paruppu Vada", price: 15, category: "starters", type: "veg" },
+      { id: "st03", name: "Gobi 65", price: 40, category: "starters", type: "veg" },
+      { id: "st04", name: "Veg Manchurian Dry", price: 45, category: "starters", type: "veg" },
+      { id: "st05", name: "Paneer 65 / Paneer Tikka", price: 60, category: "starters", type: "veg" },
+      { id: "st06", name: "Baby Corn Pepper Fry", price: 50, category: "starters", type: "veg" },
+      { id: "st07", name: "Crispy Onion Pakoda", price: 20, category: "starters", type: "veg" },
+      { id: "st08", name: "Mushroom Pepper Fry", price: 55, category: "starters", type: "veg" },
+      { id: "st09", name: "Chicken 65 (Bone / Boneless)", price: 80, category: "starters", type: "nonveg" },
+      { id: "st10", name: "Chicken Chukka", price: 90, category: "starters", type: "nonveg" },
+      { id: "st11", name: "Mutton Chukka (Madurai Style)", price: 130, category: "starters", type: "nonveg" },
+      { id: "st12", name: "Nethili Fish Fry", price: 100, category: "starters", type: "nonveg" },
+      { id: "st13", name: "Prawn Fry / Prawn 65", price: 120, category: "starters", type: "nonveg" },
+      { id: "st14", name: "Egg Bajjis", price: 25, category: "starters", type: "nonveg" },
+      { id: "st15", name: "Plantain / Chili Bajjis", price: 20, category: "starters", type: "veg" },
+
+      // 3. Main Course - Rice & Tiffins (25 Items)
+      { id: "mc01", name: "Traditional Leaf Veg Meals (Full)", price: 120, category: "main", type: "veg" },
+      { id: "mc02", name: "Seeraga Samba Veg Biryani", price: 110, category: "main", type: "veg" },
+      { id: "mc03", name: "Hyderabadi Paneer Biryani", price: 120, category: "main", type: "veg" },
+      { id: "mc04", name: "Mushroom Biryani", price: 115, category: "main", type: "veg" },
+      { id: "mc05", name: "Chettinad Chicken Biryani", price: 160, category: "main", type: "nonveg" },
+      { id: "mc06", name: "Dindigul Thalappakatti Mutton Biryani", price: 210, category: "main", type: "nonveg" },
+      { id: "mc07", name: "White Steamed Ponni Rice", price: 30, category: "main", type: "veg" },
+      { id: "mc08", name: "Sambar Rice (Ghee)", price: 45, category: "main", type: "veg" },
+      { id: "mc09", name: "Creamy Curd Rice with Pomegranate", price: 40, category: "main", type: "veg" },
+      { id: "mc10", name: "Kalkandu Rice / Sweet Pongal", price: 35, category: "main", type: "veg" },
+      { id: "mc11", name: "Lemon Rice", price: 35, category: "main", type: "veg" },
+      { id: "mc12", name: "Tamarind Rice (Puliyodarai)", price: 35, category: "main", type: "veg" },
+      { id: "mc13", name: "Coconut Rice with Cashews", price: 40, category: "main", type: "veg" },
+      { id: "mc14", name: "Kothu Parotta (Veg)", price: 60, category: "main", type: "veg" },
+      { id: "mc15", name: "Kothu Parotta (Egg / Chicken)", price: 85, category: "main", type: "nonveg" },
+      { id: "mc16", name: "Hot Soft Idli (2 pcs)", price: 25, category: "main", type: "veg" },
+      { id: "mc17", name: "Mini Podi Idli with Ghee", price: 40, category: "main", type: "veg" },
+      { id: "mc18", name: "Ghee Roast Dosa", price: 50, category: "main", type: "veg" },
+      { id: "mc19", name: "Kal Dosa (2 pcs)", price: 35, category: "main", type: "veg" },
+      { id: "mc20", name: "Rava Dosa", price: 45, category: "main", type: "veg" },
+      { id: "mc21", name: "Ven Pongal with Ghee", price: 40, category: "main", type: "veg" },
+      { id: "mc22", name: "Poori with Potato Gravy (2 pcs)", price: 40, category: "main", type: "veg" },
+      { id: "mc23", name: "Idiyappam with Coconut Milk (3 pcs)", price: 45, category: "main", type: "veg" },
+      { id: "mc24", name: "Appam with Vegetable Stew (2 pcs)", price: 50, category: "main", type: "veg" },
+      { id: "mc25", name: "Chicken Fried Rice / Veg Noodles", price: 75, category: "main", type: "nonveg" },
+
+      // 4. Curries, Gravies & Sambar (20 Items)
+      { id: "cg01", name: "Drumstick & Brinjal Arachuvitta Sambar", price: 25, category: "curries", type: "veg" },
+      { id: "cg02", name: "Poondu Vatha Kuzhambu", price: 25, category: "curries", type: "veg" },
+      { id: "cg03", name: "Kalyana Tomato Rasam", price: 15, category: "curries", type: "veg" },
+      { id: "cg04", name: "Pineapple Rasam", price: 20, category: "curries", type: "veg" },
+      { id: "cg05", name: "Mysore Mor Kuzhambu", price: 20, category: "curries", type: "veg" },
+      { id: "cg06", name: "Ennai Kathirakai Gravy", price: 30, category: "curries", type: "veg" },
+      { id: "cg07", name: "Urulai Kizhangu Poriyal", price: 20, category: "curries", type: "veg" },
+      { id: "cg08", name: "Beans Carrot Poriyal", price: 15, category: "curries", type: "veg" },
+      { id: "cg09", name: "Avial (Kerala Style)", price: 30, category: "curries", type: "veg" },
+      { id: "cg10", name: "Paneer Butter Masala", price: 50, category: "curries", type: "veg" },
+      { id: "cg11", name: "Kadai Vegetable Gravy", price: 40, category: "curries", type: "veg" },
+      { id: "cg12", name: "Chettinad Chicken Gravy", price: 85, category: "curries", type: "nonveg" },
+      { id: "cg13", name: "Pepper Chicken Curry", price: 90, category: "curries", type: "nonveg" },
+      { id: "cg14", name: "Mutton Kolumbu (Nattu Koli Style)", price: 130, category: "curries", type: "nonveg" },
+      { id: "cg15", name: "Fish Curry (Meen Kuzhambu)", price: 110, category: "curries", type: "nonveg" },
+      { id: "cg16", name: "Egg Masala Curry", price: 35, category: "curries", type: "nonveg" },
+      { id: "cg17", name: "Yam Fry (Senaikizhangu Varuval)", price: 25, category: "curries", type: "veg" },
+      { id: "cg18", name: "Kootu (Cabbage / Chow Chow)", price: 20, category: "curries", type: "veg" },
+      { id: "cg19", name: "Onion Cucumber Raita", price: 15, category: "curries", type: "veg" },
+      { id: "cg20", name: "Appalam & Mango Pickle", price: 10, category: "curries", type: "veg" },
+
+      // 5. Breads & Extras (15 Items)
+      { id: "br01", name: "Madurai Parotta (2 pcs)", price: 35, category: "breads", type: "veg" },
+      { id: "br02", name: "Bun Parotta (2 pcs)", price: 45, category: "breads", type: "veg" },
+      { id: "br03", name: "Soft Wheat Chapati (2 pcs)", price: 30, category: "breads", type: "veg" },
+      { id: "br04", name: "Butter Naan / Garlic Naan", price: 40, category: "breads", type: "veg" },
+      { id: "br05", name: "Tandoori Roti", price: 30, category: "breads", type: "veg" },
+      { id: "br06", name: "Coin Parotta (3 pcs)", price: 35, category: "breads", type: "veg" },
+      { id: "br07", name: "Rumali Roti", price: 35, category: "breads", type: "veg" },
+      { id: "br08", name: "Vada Curry (for Tiffin)", price: 25, category: "breads", type: "veg" },
+      { id: "br09", name: "Salna (Plain / Chicken Flavor)", price: 20, category: "breads", type: "veg" },
+      { id: "br10", name: "Veg Kurma / Vegetable Stew", price: 25, category: "breads", type: "veg" },
+      { id: "br11", name: "Coconut Chutney & Kara Chutney", price: 15, category: "breads", type: "veg" },
+      { id: "br12", name: "Mint Chutney & Coriander Chutney", price: 15, category: "breads", type: "veg" },
+      { id: "br13", name: "Sweet Beeda Stall Setup", price: 15, category: "breads", type: "veg" },
+      { id: "br14", name: "Live Soup Counter (Veg / Mushroom)", price: 30, category: "breads", type: "veg" },
+      { id: "br15", name: "Live Nandu Soup Counter", price: 45, category: "breads", type: "nonveg" },
+
+      // 6. Desserts & Ice Creams (15 Items)
+      { id: "ds01", name: "Vanilla Ice Cream with Cut Fruits", price: 30, category: "desserts", type: "veg" },
+      { id: "ds02", name: "Cassatta Ice Cream Slice", price: 40, category: "desserts", type: "veg" },
+      { id: "ds03", name: "Kulfi Matka (Pista / Malai)", price: 35, category: "desserts", type: "veg" },
+      { id: "ds04", name: "Falooda Cup", price: 50, category: "desserts", type: "veg" },
+      { id: "ds05", name: "Jigarthanda (Madurai Famous)", price: 45, category: "desserts", type: "veg" },
+      { id: "ds06", name: "Semiya Ice Cup", price: 15, category: "desserts", type: "veg" },
+      { id: "ds07", name: "Chocolate Fountain with Fruits", price: 40, category: "desserts", type: "veg" },
+      { id: "ds08", name: "Rasagulla (2 pcs)", price: 25, category: "desserts", type: "veg" },
+      { id: "ds09", name: "Rasamalai (1 pc)", price: 35, category: "desserts", type: "veg" },
+      { id: "ds10", name: "Basundi", price: 35, category: "desserts", type: "veg" },
+      { id: "ds11", name: "Beeda (Sweet Meetha Paan)", price: 15, category: "desserts", type: "veg" },
+      { id: "ds12", name: "Fresh Cut Fruit Stall (5 fruits)", price: 40, category: "desserts", type: "veg" },
+      { id: "ds13", name: "Butter Milk (Mor) Counter", price: 15, category: "desserts", type: "veg" },
+      { id: "ds14", name: "Degree Filter Coffee Counter", price: 20, category: "desserts", type: "veg" },
+      { id: "ds15", name: "Masala Chai Counter", price: 20, category: "desserts", type: "veg" }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      initCateringCalculator();
+      initCateringBookingForm();
+    });
+
+    /* =========================================================
+       1. LIVE CATERING CALCULATOR & FOOD SELECTION ENGINE
+       ========================================================= */
+    function initCateringCalculator() {
+      const calc = document.getElementById('cateringCalc');
+      if (!calc) return;
+
+      const state = {
+        event: 'Birthday',
+        guests: 50,
+        pkg: 'Silver',
+        selectedFoods: new Set(),
+        currentCategory: 'all',
+        searchQuery: ''
+      };
+
+      const basePrice = {
+        Silver: 499,
+        Gold: 799,
+        Platinum: 1199
+      };
+
+      // Event Type Selection
+      document.querySelectorAll('.event-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          document.querySelectorAll('.event-option').forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+          state.event = opt.dataset.value;
+          recalc();
+        });
+      });
+
+      // Package Selection
+      document.querySelectorAll('.pkg-option').forEach(opt => {
+        opt.addEventListener('click', () => {
+          document.querySelectorAll('.pkg-option').forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+          state.pkg = opt.dataset.value;
+          recalc();
+        });
+      });
+
+      // Guest Count Slider
+      const guestSlider = document.getElementById('guestSlider');
+      guestSlider?.addEventListener('input', () => {
+        state.guests = parseInt(guestSlider.value, 10);
+        const guestVal = document.getElementById('guestVal');
+        if (guestVal) guestVal.textContent = state.guests;
+        recalc();
+      });
+
+      // Render Food Menu Cards
+      function renderFoodMenu() {
+        const grid = document.getElementById('foodMenuGrid');
+        if (!grid) return;
+
+        const filtered = FOOD_DATABASE.filter(item => {
+          const matchesCat = state.currentCategory === 'all' || item.category === state.currentCategory;
+          const matchesSearch = item.name.toLowerCase().includes(state.searchQuery.toLowerCase());
+          return matchesCat && matchesSearch;
+        });
+
+        if (filtered.length === 0) {
+          grid.innerHTML = `<p style="grid-column: 1/-1; text-align:center; color:#94a3b8; padding:20px;">No foods found matching your search or category.</p>`;
+          return;
+        }
+
+        grid.innerHTML = filtered.map(item => {
+          const isSelected = state.selectedFoods.has(item.id);
+          const badgeClass = item.type === 'veg' ? 'badge-veg' : 'badge-nonveg';
+          return `
+            <div class="food-item-card ${isSelected ? 'selected' : ''}" data-id="${item.id}">
+              <div>
+                <div class="food-item-header">
+                  <span class="food-item-title">${item.name}</span>
+                  <span class="food-item-badge ${badgeClass}">${item.type.toUpperCase()}</span>
+                </div>
+                <div class="food-item-price">₹${item.price} <span style="font-size:0.75rem;font-weight:400;color:#64748b;">/ guest</span></div>
+              </div>
+              <div class="food-item-add">
+                <i class="fa-solid ${isSelected ? 'fa-circle-check' : 'fa-circle-plus'}"></i>
+                <span>${isSelected ? 'Added to Catering' : 'Add to Menu'}</span>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        // Attach click events to cards
+        grid.querySelectorAll('.food-item-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const id = card.dataset.id;
+            if (state.selectedFoods.has(id)) {
+              state.selectedFoods.delete(id);
+            } else {
+              state.selectedFoods.add(id);
+            }
+            renderFoodMenu();
+            renderSelectedTags();
+            recalc();
+          });
+        });
+      }
+
+      // Render Selected Food Tags
+      function renderSelectedTags() {
+        const container = document.getElementById('selectedFoodTags');
+        const countSpan = document.getElementById('selectedCount');
+        if (!container) return;
+
+        countSpan.textContent = state.selectedFoods.size;
+
+        if (state.selectedFoods.size === 0) {
+          container.innerHTML = `<span style="font-size:0.8rem;color:#94a3b8;">No extra food items selected yet. Click any food card above to add.</span>`;
+          return;
+        }
+
+        const selectedList = FOOD_DATABASE.filter(f => state.selectedFoods.has(f.id));
+        container.innerHTML = selectedList.map(item => `
+          <div class="selected-tag">
+            <span>${item.name} (+₹${item.price})</span>
+            <i class="fa-solid fa-xmark remove-food-tag" data-id="${item.id}"></i>
+          </div>
+        `).join('');
+
+        // Attach remove events
+        container.querySelectorAll('.remove-food-tag').forEach(btn => {
+          btn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            state.selectedFoods.delete(btn.dataset.id);
+            renderFoodMenu();
+            renderSelectedTags();
+            recalc();
+          });
+        });
+      }
+
+      // Category Tabs
+      document.querySelectorAll('.food-cat-tab').forEach(tab => {
+        tab.addEventListener('click', () => {
+          document.querySelectorAll('.food-cat-tab').forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          state.currentCategory = tab.dataset.category;
+          renderFoodMenu();
+        });
+      });
+
+      // Search Box Filter
+      const searchBox = document.getElementById('foodSearch');
+      searchBox?.addEventListener('input', (e) => {
+        state.searchQuery = e.target.value.trim();
+        renderFoodMenu();
+      });
+
+      // Recalculate Totals
+      function recalc() {
+        const perGuestBase = basePrice[state.pkg] || 0;
+        
+        // Sum prices of all selected food items
+        let foodAddonsPerGuest = 0;
+        const selectedNames = [];
+        FOOD_DATABASE.forEach(item => {
+          if (state.selectedFoods.has(item.id)) {
+            foodAddonsPerGuest += item.price;
+            selectedNames.push(item.name);
+          }
+        });
+
+        const addonsTotal = foodAddonsPerGuest * state.guests;
+        const grandTotal = (perGuestBase * state.guests) + addonsTotal;
+
+        const estAmount = document.getElementById('estAmount');
+        const estEvent = document.getElementById('estEvent');
+        const estGuests = document.getElementById('estGuests');
+        const estPkg = document.getElementById('estPkg');
+        const estAddons = document.getElementById('estAddons');
+        const hiddenTotal = document.getElementById('cateringHiddenTotal');
+        const hiddenFoodsInput = document.getElementById('cateringSelectedFoodsInput');
+
+        if (estAmount) estAmount.textContent = '₹' + grandTotal.toLocaleString('en-IN');
+        if (estEvent) estEvent.textContent = state.event;
+        if (estGuests) estGuests.textContent = state.guests;
+        if (estPkg) estPkg.textContent = state.pkg;
+        if (estAddons) estAddons.textContent = '₹' + addonsTotal.toLocaleString('en-IN');
+        if (hiddenTotal) hiddenTotal.value = grandTotal;
+        if (hiddenFoodsInput) hiddenFoodsInput.value = selectedNames.join(', ');
+      }
+
+      // Initialize Menu and Calculator
+      renderFoodMenu();
+      renderSelectedTags();
+      recalc();
+    }
+
+    /* =========================================================
+       2. CATERING BOOKING FORM HANDLING
+       ========================================================= */
+    function initCateringBookingForm() {
+      const form = document.getElementById('cateringBookingForm');
+      if (!form) return;
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+
+        const required = form.querySelectorAll('[required]');
+        let valid = true;
+
+        required.forEach(field => {
+          if (!field.value.trim()) {
+            valid = false;
+            field.style.borderColor = '#B0432C';
+          } else {
+            field.style.borderColor = '';
+          }
+        });
+
+        if (!valid) {
+          if (typeof showToast === 'function') {
+            showToast('Please fill in all required fields.', true);
+          }
+          return;
+        }
+
+        const estAmount = document.getElementById('estAmount')?.textContent || '₹0';
+        const selectedFoods = document.getElementById('cateringSelectedFoodsInput')?.value || 'None';
+
+        const record = {
+          id: Date.now(),
+          name: form.fullName.value,
+          phone: form.phone.value,
+          eventDate: form.eventDate.value,
+          guestCount: form.guestCount.value || document.getElementById('estGuests')?.textContent,
+          address: form.address.value,
+          notes: form.notes.value,
+          eventType: document.getElementById('estEvent')?.textContent || '',
+          package: document.getElementById('estPkg')?.textContent || '',
+          selectedAddonFoods: selectedFoods,
+          estimatedTotal: estAmount,
+          status: 'Pending'
+        };
+
+        // Save to LocalStorage
+        const enquiries = JSON.parse(localStorage.getItem('htk_catering_enquiries') || '[]');
+        enquiries.push(record);
+        localStorage.setItem('htk_catering_enquiries', JSON.stringify(enquiries));
+
+        // Submit to Google Sheets script if loaded
+        if (typeof sendToGoogleSheet === 'function') {
+          sendToGoogleSheet('Catering', record);
+        }
+
+        if (typeof showToast === 'function') {
+          showToast('Catering enquiry received! Our team will call you to confirm details.');
+        }
+
+        form.reset();
+      });
+    }
+  </script>
 </body>
 </html>

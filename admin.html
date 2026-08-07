@@ -1,157 +1,923 @@
 <!DOCTYPE html>
+
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Admin Dashboard | HomeTaste Kitchen</title>
+
 <link rel="stylesheet" href="css/style.css">
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
 </head>
+
 <body>
 
+
+
 <div class="admin-shell">
+
   <!-- SIDEBAR -->
+
   <aside class="sidebar">
+
     <a href="index.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste</a>
+
     <a href="#" class="sidebar-link active" data-tab="tab-dashboard"><i class="fa-solid fa-gauge"></i> Dashboard</a>
-    <a href="#" class="sidebar-link" data-tab="tab-menu"><i class="fa-solid fa-utensils"></i> Menu Management</a>
+
+    <a href="#" class="sidebar-link" data-tab="tab-homefood"><i class="fa-solid fa-utensils"></i> homefood Management</a>
+
     <a href="#" class="sidebar-link" data-tab="tab-gallery"><i class="fa-solid fa-images"></i> Gallery Management</a>
+
     <a href="#" class="sidebar-link" data-tab="tab-bookings"><i class="fa-solid fa-calendar-check"></i> Booking Management</a>
+
     <a href="#" class="sidebar-link" data-tab="tab-pricing"><i class="fa-solid fa-tags"></i> Pricing Manager</a>
+
     <a href="#" class="sidebar-link" data-tab="tab-settings"><i class="fa-solid fa-gear"></i> Business Settings</a>
+
     <a href="index.html" style="margin-top:24px;"><i class="fa-solid fa-globe"></i> View Website</a>
+
     <a href="#" id="logoutBtn"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+
   </aside>
 
+
+
   <!-- MAIN -->
+
   <main class="admin-main">
+
     <div class="admin-topbar">
+
       <div>
+
         <h2 style="margin-bottom:4px;">Welcome back, <span id="adminUserName">Admin</span></h2>
+
         <p style="color:var(--brown-soft);font-size:.9rem;">Here's what's happening with your kitchen today.</p>
+
       </div>
+
       <a href="index.html" class="btn btn-outline btn-sm">← Back to Website</a>
+
     </div>
+
+
 
     <!-- DASHBOARD TAB -->
+
     <div class="tab-panel" id="tab-dashboard">
+
       <div class="grid grid-4" style="margin-bottom:30px;">
+
         <div class="card stat-card"><div class="stat-icon" style="background:var(--orange);"><i class="fa-solid fa-receipt"></i></div><div><h3 id="statTotalOrders">0</h3><span>Total Orders</span></div></div>
+
         <div class="card stat-card"><div class="stat-icon" style="background:var(--green);"><i class="fa-solid fa-champagne-glasses"></i></div><div><h3 id="statCatering">0</h3><span>Catering Bookings</span></div></div>
-        <div class="card stat-card"><div class="stat-icon" style="background:#B0432C;"><i class="fa-solid fa-utensils"></i></div><div><h3 id="statMenuItems">0</h3><span>Menu Items</span></div></div>
+
+        <div class="card stat-card"><div class="stat-icon" style="background:#B0432C;"><i class="fa-solid fa-utensils"></i></div><div><h3 id="stathomefoodItems">0</h3><span>homefood Items</span></div></div>
+
         <div class="card stat-card"><div class="stat-icon" style="background:var(--brown);"><i class="fa-solid fa-users"></i></div><div><h3 id="statCustomers">0</h3><span>Customers</span></div></div>
+
       </div>
+
       <div class="admin-panel">
+
         <div class="panel-head"><h3>Getting Started</h3></div>
-        <p style="color:var(--brown-soft);font-size:.92rem;line-height:1.8;">Use the sidebar to manage your <strong>Menu</strong> (add, edit, delete dishes and upload images), your <strong>Gallery</strong>, incoming <strong>Bookings</strong>, catering <strong>Pricing</strong>, and your <strong>Business Settings</strong>. All changes are saved automatically.</p>
+
+        <p style="color:var(--brown-soft);font-size:.92rem;line-height:1.8;">Use the sidebar to manage your <strong>homefood</strong> (add, edit, delete dishes and upload images), your <strong>Gallery</strong>, incoming <strong>Bookings</strong>, catering <strong>Pricing</strong>, and your <strong>Business Settings</strong>. All changes are saved automatically.</p>
+
       </div>
+
     </div>
 
-    <!-- MENU MANAGEMENT TAB -->
-    <div class="tab-panel" id="tab-menu" style="display:none;">
+
+
+    <!-- homefood MANAGEMENT TAB -->
+
+    <div class="tab-panel" id="tab-homefood" style="display:none;">
+
       <div class="admin-panel">
+
         <div class="panel-head">
-          <h3>Menu Management</h3>
+
+          <h3>homefood Management</h3>
+
           <button class="btn btn-primary btn-sm" id="addDishBtn"><i class="fa-solid fa-plus"></i> Add Dish</button>
+
         </div>
+
         <table>
+
           <thead><tr><th>Image</th><th>Name</th><th>Category</th><th>Price</th><th>Type</th><th>Actions</th></tr></thead>
-          <tbody id="menuTableBody"></tbody>
+
+          <tbody id="homefoodTableBody"></tbody>
+
         </table>
+
       </div>
+
     </div>
+
+
 
     <!-- GALLERY MANAGEMENT TAB -->
+
     <div class="tab-panel" id="tab-gallery" style="display:none;">
+
       <div class="admin-panel">
+
         <div class="panel-head">
+
           <h3>Gallery Management</h3>
+
           <label class="btn btn-primary btn-sm" style="cursor:pointer;">
+
             <i class="fa-solid fa-upload"></i> Upload Images
+
             <input type="file" id="galleryUploadInput" accept="image/*" multiple style="display:none;">
+
           </label>
+
         </div>
+
         <div class="grid grid-4" id="adminGalleryGrid"></div>
+
       </div>
+
     </div>
+
+
 
     <!-- BOOKING MANAGEMENT TAB -->
+
     <div class="tab-panel" id="tab-bookings" style="display:none;">
+
       <div class="admin-panel">
+
         <div class="panel-head"><h3>Booking Management</h3></div>
+
         <table>
+
           <thead><tr><th>Customer</th><th>Phone</th><th>Event Date</th><th>Guests</th><th>Status</th><th>Est. Price</th><th>Update Status</th></tr></thead>
+
           <tbody id="bookingTableBody"></tbody>
+
         </table>
+
       </div>
+
     </div>
+
+
 
     <!-- PRICING MANAGER TAB -->
+
     <div class="tab-panel" id="tab-pricing" style="display:none;">
+
       <div class="admin-panel" style="max-width:560px;">
+
         <div class="panel-head"><h3>Catering Package Pricing</h3></div>
+
         <form id="pricingForm">
+
           <div class="form-field"><label>Silver Package (₹ / guest)</label><input type="number" name="silverPrice" required></div>
+
           <div class="form-field"><label>Gold Package (₹ / guest)</label><input type="number" name="goldPrice" required></div>
+
           <div class="form-field"><label>Platinum Package (₹ / guest)</label><input type="number" name="platinumPrice" required></div>
+
           <button type="submit" class="btn btn-primary">Save Pricing</button>
+
         </form>
+
       </div>
+
     </div>
+
+
 
     <!-- BUSINESS SETTINGS TAB -->
+
     <div class="tab-panel" id="tab-settings" style="display:none;">
+
       <div class="admin-panel" style="max-width:560px;">
+
         <div class="panel-head"><h3>Business Settings</h3></div>
+
         <form id="settingsForm">
+
           <div class="form-field"><label>Kitchen Name</label><input type="text" name="kitchenName" placeholder="HomeTaste Kitchen"></div>
+
           <div class="form-field"><label>Phone Number</label><input type="tel" name="phone" placeholder="+91 98765 43210"></div>
+
           <div class="form-field"><label>Email Address</label><input type="email" name="email" placeholder="hello@hometastekitchen.in"></div>
+
           <div class="form-field"><label>Kitchen Address</label><input type="text" name="address" placeholder="24 Green Avenue, Chennai"></div>
+
           <div class="form-field"><label>Instagram URL</label><input type="text" name="instagram" placeholder="https://instagram.com/…"></div>
+
           <div class="form-field"><label>WhatsApp Number</label><input type="text" name="whatsapp" placeholder="+91 98765 43210"></div>
+
           <button type="submit" class="btn btn-primary">Save Settings</button>
+
         </form>
+
       </div>
+
     </div>
+
   </main>
+
 </div>
+
+
 
 <!-- ADD/EDIT DISH MODAL -->
-<div class="modal-overlay" id="menuModalOverlay">
+
+<div class="modal-overlay" id="homefoodModalOverlay">
+
   <div class="modal">
-    <div class="modal-head"><h3 id="menuModalTitle">Add Dish</h3><i class="fa-solid fa-xmark" id="menuModalClose" style="cursor:pointer;font-size:1.2rem;"></i></div>
+
+    <div class="modal-head"><h3 id="homefoodModalTitle">Add Dish</h3><i class="fa-solid fa-xmark" id="homefoodModalClose" style="cursor:pointer;font-size:1.2rem;"></i></div>
+
     <form id="dishForm">
+
       <div class="form-field">
+
         <label>Dish Image</label>
+
         <label class="img-upload">
+
           <img id="dishImagePreview" style="display:none;">
+
           <div><i class="fa-solid fa-image"></i><br>Click to upload image</div>
+
           <input type="file" id="dishImageInput" accept="image/*" style="display:none;">
+
         </label>
+
       </div>
+
       <div class="form-field"><label>Dish Name</label><input type="text" name="dishName" required></div>
+
       <div class="form-row">
+
         <div class="form-field"><label>Category</label>
+
           <select name="dishCat" required>
+
             <option>Breakfast</option><option>Lunch</option><option>Dinner</option>
+
             <option>Snacks</option><option>Desserts</option><option>Beverages</option><option>Party Combo</option>
+
           </select>
+
         </div>
+
         <div class="form-field"><label>Price (₹)</label><input type="number" name="dishPrice" required min="0"></div>
+
       </div>
+
       <div class="form-field"><label>Type</label>
+
         <select name="dishType" required><option value="veg">Veg</option><option value="nonveg">Non-Veg</option></select>
+
       </div>
+
       <button type="submit" class="btn btn-primary btn-block">Save Dish</button>
+
     </form>
+
   </div>
+
 </div>
 
-<script src="admin.js"></script>
+
+
+
+
 <script>
+
   document.getElementById('dishImageInput').addEventListener('change', function(){});
+
   document.querySelector('.img-upload').addEventListener('click', () => document.getElementById('dishImageInput').click());
+
+  /* =========================================================
+
+   HomeTaste Kitchen — Admin Dashboard Script
+
+   ========================================================= */
+
+
+
+const SEED_homefood = [
+
+  {id:1, name:'Paneer Butter Masala', cat:'Lunch', price:249, type:'veg', img:'https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w:400'},
+
+  {id:2, name:'Chicken Biryani', cat:'Lunch', price:299, type:'nonveg', img:'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=400'},
+
+  {id:3, name:'Masala Dosa', cat:'Breakfast', price:99, type:'veg', img:'https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=400'},
+
+  {id:4, name:'Gulab Jamun', cat:'Desserts', price:79, type:'veg', img:'https://images.unsplash.com/photo-1601303516361-f2b1ba0d95b2?w=400'}
+
+];
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+  handleLogin();
+
+  guardAdminPage();
+
+  initSidebarActive();
+
+  initLogout();
+
+  initDashboardStats();
+
+  inithomefoodManagement();
+
+  initGalleryManagement();
+
+  initBookingManagement();
+
+  initPricingManager();
+
+  initBusinessSettings();
+
+});
+
+
+
+/* ---------- Auth (demo only — localStorage flag) ---------- */
+
+function handleLogin(){
+
+  const form = document.getElementById('adminLoginForm');
+
+  if(!form) return;
+
+  form.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    const user = form.username.value.trim();
+
+    const pass = form.password.value.trim();
+
+    if(!user || !pass){ showAdminToast('Enter both username and password.', true); return; }
+
+    localStorage.setItem('htk_admin_auth', JSON.stringify({user, at: Date.now()}));
+
+    showAdminToast('Login successful — redirecting…');
+
+    setTimeout(() => window.location.href = 'admin.html', 700);
+
+  });
+
+}
+
+
+
+function guardAdminPage(){
+
+  if(!document.querySelector('.admin-shell')) return;
+
+  const nameEl = document.getElementById('adminUserName');
+
+  const auth = JSON.parse(localStorage.getItem('htk_admin_auth') || 'null');
+
+  if(nameEl) nameEl.textContent = auth?.user || 'Admin';
+
+}
+
+
+
+function initLogout(){
+
+  document.getElementById('logoutBtn')?.addEventListener('click', () => {
+
+    localStorage.removeItem('htk_admin_auth');
+
+    window.location.href = 'admin.html';
+
+  });
+
+}
+
+
+
+function initSidebarActive(){
+
+  document.querySelectorAll('.sidebar-link').forEach(link => {
+
+    link.addEventListener('click', (e) => {
+
+      if(link.dataset.tab){
+
+        e.preventDefault();
+
+        document.querySelectorAll('.sidebar-link').forEach(l => l.classList.remove('active'));
+
+        link.classList.add('active');
+
+        document.querySelectorAll('.tab-panel').forEach(p => p.style.display = 'none');
+
+        document.getElementById(link.dataset.tab).style.display = 'block';
+
+      }
+
+    });
+
+  });
+
+}
+
+
+
+/* ---------- Data helpers ---------- */
+
+function gethomefood(){
+
+  let homefood = JSON.parse(localStorage.getItem('htk_homefood') || 'null');
+
+  if(!homefood){ homefood = SEED_homefood; localStorage.setItem('htk_homefood', JSON.stringify(homefood)); }
+
+  return homefood;
+
+}
+
+function savehomefood(homefood){ localStorage.setItem('htk_homefood', JSON.stringify(homefood)); }
+
+
+
+function getBookings(){ return JSON.parse(localStorage.getItem('htk_bookings') || '[]'); }
+
+function saveBookings(b){ localStorage.setItem('htk_bookings', JSON.stringify(b)); }
+
+
+
+function getGallery(){ return JSON.parse(localStorage.getItem('htk_gallery') || '[]'); }
+
+function saveGallery(g){ localStorage.setItem('htk_gallery', JSON.stringify(g)); }
+
+
+
+/* ---------- Dashboard stats ---------- */
+
+function initDashboardStats(){
+
+  const el = document.getElementById('statTotalOrders');
+
+  if(!el) return;
+
+  const bookings = getBookings();
+
+  document.getElementById('statTotalOrders').textContent = bookings.length;
+
+  document.getElementById('statCatering').textContent = bookings.filter(b => b.guests).length;
+
+  document.getElementById('stathomefoodItems').textContent = gethomefood().length;
+
+  const customers = new Set(bookings.map(b => b.phone));
+
+  document.getElementById('statCustomers').textContent = customers.size;
+
+}
+
+
+
+/* ---------- homefood Management (CRUD) ---------- */
+
+function inithomefoodManagement(){
+
+  const tbody = document.getElementById('homefoodTableBody');
+
+  if(!tbody) return;
+
+
+
+  function render(){
+
+    const homefood = gethomefood();
+
+    tbody.innerHTML = homefood.map(item => `
+
+      <tr>
+
+        <td><img src="${item.img}" alt="${item.name}" style="width:44px;height:44px;border-radius:8px;object-fit:cover;"></td>
+
+        <td>${item.name}</td>
+
+        <td>${item.cat}</td>
+
+        <td>₹${item.price}</td>
+
+        <td style="text-transform:capitalize;">${item.type}</td>
+
+        <td>
+
+          <button class="icon-btn edit-item" data-id="${item.id}"><i class="fa-solid fa-pen"></i></button>
+
+          <button class="icon-btn delete-item" data-id="${item.id}"><i class="fa-solid fa-trash"></i></button>
+
+        </td>
+
+      </tr>`).join('');
+
+
+
+    tbody.querySelectorAll('.delete-item').forEach(btn => btn.addEventListener('click', () => {
+
+      let homefood = gethomefood().filter(m => m.id != btn.dataset.id);
+
+      savehomefood(homefood); render(); initDashboardStats();
+
+      showAdminToast('Dish deleted.');
+
+    }));
+
+    tbody.querySelectorAll('.edit-item').forEach(btn => btn.addEventListener('click', () => openhomefoodModal(btn.dataset.id)));
+
+  }
+
+
+
+  document.getElementById('addDishBtn')?.addEventListener('click', () => openhomefoodModal());
+
+  document.getElementById('homefoodModalClose')?.addEventListener('click', closehomefoodModal);
+
+  document.getElementById('homefoodModalOverlay')?.addEventListener('click', (e) => { if(e.target.id === 'homefoodModalOverlay') closehomefoodModal(); });
+
+
+
+  const imgInput = document.getElementById('dishImageInput');
+
+  imgInput?.addEventListener('change', () => {
+
+    const file = imgInput.files[0];
+
+    if(!file) return;
+
+    const reader = new FileReader();
+
+    reader.onload = () => {
+
+      document.getElementById('dishImagePreview').src = reader.result;
+
+      document.getElementById('dishImagePreview').style.display = 'block';
+
+      imgInput.dataset.preview = reader.result;
+
+    };
+
+    reader.readAsDataURL(file);
+
+  });
+
+
+
+  document.getElementById('dishForm')?.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    const form = e.target;
+
+    let homefood = gethomefood();
+
+    const id = form.dataset.editId ? parseInt(form.dataset.editId) : Date.now();
+
+    const dish = {
+
+      id, name: form.dishName.value, cat: form.dishCat.value,
+
+      price: parseFloat(form.dishPrice.value), type: form.dishType.value,
+
+      img: imgInput.dataset.preview || 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=400'
+
+    };
+
+    if(form.dataset.editId){
+
+      homefood = homefood.map(m => m.id === id ? dish : m);
+
+    } else {
+
+      homefood.push(dish);
+
+    }
+
+    savehomefood(homefood); render(); initDashboardStats(); closehomefoodModal();
+
+    showAdminToast('Dish saved successfully.');
+
+  });
+
+
+
+  function openhomefoodModal(id){
+
+    const form = document.getElementById('dishForm');
+
+    form.reset();
+
+    delete form.dataset.editId;
+
+    document.getElementById('dishImagePreview').style.display = 'none';
+
+    document.getElementById('homefoodModalTitle').textContent = 'Add Dish';
+
+    if(id){
+
+      const item = gethomefood().find(m => m.id == id);
+
+      if(item){
+
+        form.dataset.editId = id;
+
+        form.dishName.value = item.name; form.dishCat.value = item.cat;
+
+        form.dishPrice.value = item.price; form.dishType.value = item.type;
+
+        document.getElementById('dishImagePreview').src = item.img;
+
+        document.getElementById('dishImagePreview').style.display = 'block';
+
+        imgInput.dataset.preview = item.img;
+
+        document.getElementById('homefoodModalTitle').textContent = 'Edit Dish';
+
+      }
+
+    }
+
+    document.getElementById('homefoodModalOverlay').classList.add('open');
+
+  }
+
+  function closehomefoodModal(){ document.getElementById('homefoodModalOverlay').classList.remove('open'); }
+
+
+
+  render();
+
+}
+
+
+
+/* ---------- Gallery Management ---------- */
+
+function initGalleryManagement(){
+
+  const grid = document.getElementById('adminGalleryGrid');
+
+  if(!grid) return;
+
+
+
+  function render(){
+
+    const items = getGallery();
+
+    if(!items.length){
+
+      grid.innerHTML = '<p class="empty-note">No images uploaded yet. Add some with the button above.</p>';
+
+      return;
+
+    }
+
+    grid.innerHTML = items.map(img => `
+
+      <div style="position:relative;border-radius:12px;overflow:hidden;">
+
+        <img src="${img.src}" style="width:100%;height:120px;object-fit:cover;">
+
+        <button class="icon-btn del-gallery" data-id="${img.id}" style="position:absolute;top:6px;right:6px;background:#fff;"><i class="fa-solid fa-trash"></i></button>
+
+      </div>`).join('');
+
+    grid.querySelectorAll('.del-gallery').forEach(btn => btn.addEventListener('click', () => {
+
+      saveGallery(getGallery().filter(g => g.id != btn.dataset.id));
+
+      render();
+
+    }));
+
+  }
+
+
+
+  document.getElementById('galleryUploadInput')?.addEventListener('change', (e) => {
+
+    [...e.target.files].forEach(file => {
+
+      const reader = new FileReader();
+
+      reader.onload = () => {
+
+        const items = getGallery();
+
+        items.push({id: Date.now() + Math.random(), src: reader.result});
+
+        saveGallery(items); render();
+
+      };
+
+      reader.readAsDataURL(file);
+
+    });
+
+    showAdminToast('Images uploaded.');
+
+  });
+
+
+
+  render();
+
+}
+
+
+
+/* ---------- Booking Management ---------- */
+
+function initBookingManagement(){
+
+  const tbody = document.getElementById('bookingTableBody');
+
+  if(!tbody) return;
+
+
+
+  function render(){
+
+    const bookings = getBookings();
+
+    if(!bookings.length){
+
+      tbody.innerHTML = '<tr><td colspan="7" class="empty-note">No bookings yet.</td></tr>';
+
+      return;
+
+    }
+
+    tbody.innerHTML = bookings.map(b => `
+
+      <tr>
+
+        <td>${b.name || '—'}</td>
+
+        <td>${b.phone || '—'}</td>
+
+        <td>${b.date || '—'}</td>
+
+        <td>${b.guests || '—'}</td>
+
+        <td><span class="status-tag status-${(b.status||'pending').toLowerCase()}">${b.status || 'Pending'}</span></td>
+
+        <td>${b.total || '—'}</td>
+
+        <td>
+
+          <select class="status-select" data-id="${b.id}">
+
+            <option ${b.status==='Pending'?'selected':''}>Pending</option>
+
+            <option ${b.status==='Confirmed'?'selected':''}>Confirmed</option>
+
+            <option ${b.status==='Cancelled'?'selected':''}>Cancelled</option>
+
+          </select>
+
+        </td>
+
+      </tr>`).join('');
+
+    tbody.querySelectorAll('.status-select').forEach(sel => sel.addEventListener('change', () => {
+
+      const bookings = getBookings().map(b => b.id == sel.dataset.id ? {...b, status: sel.value} : b);
+
+      saveBookings(bookings); render();
+
+      showAdminToast('Booking status updated.');
+
+    }));
+
+  }
+
+  render();
+
+}
+
+
+
+/* ---------- Pricing Manager ---------- */
+
+function initPricingManager(){
+
+  const form = document.getElementById('pricingForm');
+
+  if(!form) return;
+
+  const pricing = JSON.parse(localStorage.getItem('htk_pricing') || '{"silver":499,"gold":799,"platinum":1199}');
+
+  form.silverPrice.value = pricing.silver;
+
+  form.goldPrice.value = pricing.gold;
+
+  form.platinumPrice.value = pricing.platinum;
+
+
+
+  form.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    const updated = {silver: form.silverPrice.value, gold: form.goldPrice.value, platinum: form.platinumPrice.value};
+
+    localStorage.setItem('htk_pricing', JSON.stringify(updated));
+
+    showAdminToast('Package pricing updated.');
+
+  });
+
+}
+
+
+
+/* ---------- Business Settings ---------- */
+
+function initBusinessSettings(){
+
+  const form = document.getElementById('settingsForm');
+
+  if(!form) return;
+
+  const settings = JSON.parse(localStorage.getItem('htk_settings') || '{}');
+
+  Object.keys(settings).forEach(key => { if(form[key]) form[key].value = settings[key]; });
+
+
+
+  form.addEventListener('submit', (e) => {
+
+    e.preventDefault();
+
+    const data = {};
+
+    [...form.elements].forEach(el => { if(el.name) data[el.name] = el.value; });
+
+    localStorage.setItem('htk_settings', JSON.stringify(data));
+
+    showAdminToast('Business settings saved.');
+
+  });
+
+}
+
+
+
+/* ---------- Toast ---------- */
+
+function showAdminToast(msg, isError){
+
+  let toast = document.getElementById('htkAdminToast');
+
+  if(!toast){
+
+    toast = document.createElement('div');
+
+    toast.id = 'htkAdminToast';
+
+    toast.style.cssText = 'position:fixed;bottom:30px;left:50%;transform:translateX(-50%) translateY(20px);background:#3D7A52;color:#fff;padding:16px 26px;border-radius:99px;font-family:Poppins,sans-serif;font-size:.88rem;font-weight:600;z-index:3000;opacity:0;transition:.35s;box-shadow:0 16px 40px rgba(0,0,0,.25);';
+
+    document.body.appendChild(toast);
+
+  }
+
+  toast.style.background = isError ? '#B0432C' : '#3D7A52';
+
+  toast.textContent = msg;
+
+  requestAnimationFrame(() => { toast.style.opacity = '1'; toast.style.transform = 'translateX(-50%) translateY(0)'; });
+
+  clearTimeout(toast._t);
+
+  toast._t = setTimeout(() => { toast.style.opacity = '0'; toast.style.transform = 'translateX(-50%) translateY(20px)'; }, 3000);
+
+}
+
+
+
 </script>
+
 </body>
+
 </html>

@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initFAQ();
   initLightbox();
   initGalleryFilter();
-  initMenuPage();
+  inithomefoodPage();
   initCateringCalculator();
   initCateringBookingForm();
   initBookingPage();
@@ -81,18 +81,18 @@ function initGalleryFilter(){
 }
 
 /* =========================================================
-   MENU PAGE — search, category filter, cart
+   homefood PAGE — search, category filter, cart
    ========================================================= */
-function initMenuPage(){
-  const grid = document.getElementById('menuGrid');
+function inithomefoodPage(){
+  const grid = document.getElementById('homefoodGrid');
   if(!grid) return;
 
-  const search = document.getElementById('menuSearch');
-  const chips = document.querySelectorAll('.menu-chip');
+  const search = document.getElementById('homefoodSearch');
+  const chips = document.querySelectorAll('.homefood-chip');
 
   const applyFilter = () => {
     const term = (search?.value || '').toLowerCase().trim();
-    const activeCat = document.querySelector('.menu-chip.active')?.dataset.cat || 'all';
+    const activeCat = document.querySelector('.homefood-chip.active')?.dataset.cat || 'all';
     document.querySelectorAll('.dish-card').forEach(card => {
       const name = card.dataset.name.toLowerCase();
       const cat = card.dataset.cat;
@@ -137,7 +137,7 @@ function updateCartBadge(){
 }
 
 /* =========================================================
-   CATERING PAGE — live calculator + menu builder
+   CATERING PAGE — live calculator + homefood builder
    ========================================================= */
 function initCateringCalculator(){
   const calc = document.getElementById('cateringCalc');
@@ -241,7 +241,7 @@ function initBookingPage(){
 
   function renderSummary(){
     if(!cart.length){
-      summaryEl.innerHTML = '<p class="empty-note">No dishes selected yet. Add items from the Menu page, or describe your requirements in special instructions.</p>';
+      summaryEl.innerHTML = '<p class="empty-note">No dishes selected yet. Add items from the homefood page, or describe your requirements in special instructions.</p>';
       totalEl.textContent = '₹0';
       return;
     }
