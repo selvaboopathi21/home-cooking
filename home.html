@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home | HomeTaste Kitchen</title>
+<meta name="description" content="Fresh homemade food, cloud kitchen convenience, and premium catering — delivered with love.">
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="home.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
+      <div class="nav-links">
+        <a href="home.html" data-page="home" class="active">Home</a>
+               <a href="homefood.html" data-page="homefood">homefood</a>
+                <a href="booking.html" data-page="booking">Book Order</a>
+        <a href="catering.html" data-page="catering">Catering</a>
+    
+        <a href="contact.html" data-page="contact">Contact</a>
+      </div>
+      <div class="nav-actions">
+        <a href="booking.html" class="btn btn-primary btn-sm">Order Now</a>
+        <a href="admin.html" class="btn btn-outline btn-sm">Admin</a>
+        <button class="hamburger" aria-label="homefood"><span></span><span></span><span></span></button>
+      </div>
+    </div>
+  </nav>
+  <div class="overlay"></div>
+  <div class="mobile-panel">
+    <a href="home.html">Home</a>
+   <a href="homefood.html">homefood</a>
+    <a href="catering.html">Catering</a>
+        <a href="booking.html">Book Order</a>
+    <a href="contact.html">Contact</a>
+    <a href="admin.html">Admin Login</a>
+    <a href="booking.html" class="btn btn-primary btn-block" style="margin-top:16px;text-align:center;">Order Now</a>
+  </div>
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg"><img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?w=1600&q=80" alt="Homemade thali spread"></div>
+    <div class="hero-content reveal show">
+      <span class="eyebrow">Home Kitchen · Cloud Kitchen · Catering</span>
+      <h1>Fresh Homemade Food, Delivered With Love</h1>
+      <p>Enjoy healthy home-cooked meals, cloud kitchen convenience, and premium catering services for every occasion.</p>
+      <div class="hero-btns">
+        <a href="booking.html" class="btn btn-primary">Order Now</a>
+        <a href="homefood.html" class="btn btn-ghost">Explore homefood</a>
+        <a href="catering.html" class="btn btn-ghost">Get Catering Quote</a>
+      </div>
+      <div class="hero-stats">
+        <div><strong>12k+</strong><span>Meals Delivered</span></div>
+        <div><strong>4.9★</strong><span>Average Rating</span></div>
+        <div><strong>350+</strong><span>Events Catered</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WELCOME -->
+  <section class="section two-col">
+    <div class="reveal">
+      <div class="img-frame"><img src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&q=80" alt="Chef preparing home food"></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Welcome To Our Kitchen</span>
+      <h2 class="section-title">Real Home Cooking, Made For Modern Life</h2>
+      <p class="section-sub" style="margin-bottom:24px;">HomeTaste Kitchen started as a single home kitchen serving neighbours — today we cook fresh meals daily, run a full cloud kitchen for delivery, and cater weddings and parties, all without losing the home-style taste that started it all.</p>
+      <div class="grid grid-2" style="gap:18px;">
+        <div style="display:flex;gap:12px;align-items:flex-start;"><i class="fa-solid fa-leaf" style="color:var(--green);margin-top:4px;"></i><span style="font-size:.9rem;">Fresh ingredients sourced daily</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;"><i class="fa-solid fa-fire" style="color:var(--orange);margin-top:4px;"></i><span style="font-size:.9rem;">Cooked to order, never frozen</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;"><i class="fa-solid fa-hand-holding-heart" style="color:var(--green);margin-top:4px;"></i><span style="font-size:.9rem;">Recipes passed down generations</span></div>
+        <div style="display:flex;gap:12px;align-items:flex-start;"><i class="fa-solid fa-truck" style="color:var(--orange);margin-top:4px;"></i><span style="font-size:.9rem;">On-time delivery, every time</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURED DISHES -->
+  <section class="section" style="padding-top:0;">
+    <span class="eyebrow center" style="display:block;text-align:center;">Featured Dishes</span>
+    <h2 class="section-title center">Crowd Favourites From Our Kitchen</h2>
+    <p class="section-sub center">A taste of what our regulars keep coming back for.</p>
+    <div class="grid grid-4">
+      <div class="card dish-card reveal">
+        <div class="dish-img"><span class="badge badge-veg">Veg</span><span class="badge badge-popular">Popular</span><img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=500&q=80" alt="Paneer Butter Masala"></div>
+        <div class="dish-body"><h4>Paneer Butter Masala</h4><p>Cottage cheese simmered in a silky tomato-butter gravy.</p><div class="dish-foot"><span class="price">₹249</span><a href="homefood.html" class="add-cart"><i class="fa-solid fa-plus"></i></a></div></div>
+      </div>
+      <div class="card dish-card reveal">
+        <div class="dish-img"><span class="badge badge-nonveg">Non-Veg</span><span class="badge badge-popular">Popular</span><img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?w=500&q=80" alt="Chicken Biryani"></div>
+        <div class="dish-body"><h4>Chicken Biryani</h4><p>Slow-cooked basmati layered with tender spiced chicken.</p><div class="dish-foot"><span class="price">₹299</span><a href="homefood.html" class="add-cart"><i class="fa-solid fa-plus"></i></a></div></div>
+      </div>
+      <div class="card dish-card reveal">
+        <div class="dish-img"><span class="badge badge-veg">Veg</span><img src="https://images.unsplash.com/photo-1668236543090-82eba5ee5976?w=500&q=80" alt="Masala Dosa"></div>
+        <div class="dish-body"><h4>Masala Dosa</h4><p>Crisp rice crepe filled with spiced potato masala.</p><div class="dish-foot"><span class="price">₹99</span><a href="homefood.html" class="add-cart"><i class="fa-solid fa-plus"></i></a></div></div>
+      </div>
+      <div class="card dish-card reveal">
+        <div class="dish-img"><span class="badge badge-veg">Veg</span><img src="./gulap.jpg" alt="Gulab Jamun"></div>
+        <div class="dish-body"><h4>Gulab Jamun</h4><p>Warm milk dumplings soaked in cardamom syrup.</p><div class="dish-foot"><span class="price">₹79</span><a href="homefood.html" class="add-cart"><i class="fa-solid fa-plus"></i></a></div></div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WHY CHOOSE US -->
+  <section class="section">
+    <span class="eyebrow center" style="display:block;text-align:center;">Why Choose Us</span>
+    <h2 class="section-title center">What Makes Our Kitchen Different</h2>
+    <div class="grid grid-4 mt-lg">
+      <div class="card icon-card reveal"><div class="icon-circle"><i class="fa-solid fa-mortar-pestle"></i></div><h4>Home-Style Recipes</h4><p>Every dish is cooked the way it's made at home — not a restaurant shortcut in sight.</p></div>
+      <div class="card icon-card reveal"><div class="icon-circle"><i class="fa-solid fa-shield-heart"></i></div><h4>Hygiene First</h4><p>FSSAI-certified kitchen with daily sanitation checks and sealed packaging.</p></div>
+      <div class="card icon-card reveal"><div class="icon-circle"><i class="fa-solid fa-clock"></i></div><h4>Always On Time</h4><p>Real-time order tracking means your food arrives hot, exactly when promised.</p></div>
+      <div class="card icon-card reveal"><div class="icon-circle"><i class="fa-solid fa-tags"></i></div><h4>Honest Pricing</h4><p>No hidden charges — what you see on the homefood is what you pay.</p></div>
+    </div>
+  </section>
+
+
+  <!-- TESTIMONIALS -->
+  <section class="section">
+    <span class="eyebrow center" style="display:block;text-align:center;">Testimonials</span>
+    <h2 class="section-title center">Loved By Families Like Yours</h2>
+    <div class="grid grid-3 mt-lg">
+      <div class="card testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Tastes exactly like my grandmother's cooking. We order the weekly thali every single week now."</p>
+        <div class="reviewer"><img class="avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80" alt="Reviewer"><div><strong>Ananya R.</strong><span>Regular Customer</span></div></div>
+      </div>
+      <div class="card testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>"They catered our daughter's baby shower — every guest asked where the food was from."</p>
+        <div class="reviewer"><img class="avatar" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?w=100&q=80" alt="Reviewer"><div><strong>Karthik S.</strong><span>Catering Client</span></div></div>
+      </div>
+      <div class="card testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Reliable, warm packaging, and always on time. My office team orders lunch from them thrice a week."</p>
+        <div class="reviewer"><img class="avatar" src="https://images.unsplash.com/photo-1601412436009-d964bd02edbc?w=100&q=80" alt="Reviewer"><div><strong>Priya M.</strong><span>Corporate Client</span></div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CATERING PREVIEW -->
+  <section class="section" style="background:#fff;">
+    <div class="two-col">
+      <div class="reveal"><div class="img-frame"><img src="https://images.unsplash.com/photo-1555244162-803834f70033?w=800&q=80" alt="Catering buffet setup"></div></div>
+      <div class="reveal">
+        <span class="eyebrow">Catering Services</span>
+        <h2 class="section-title">Planning A Party Or Event?</h2>
+        <p class="section-sub">From birthdays to weddings, we handle catering for every occasion with customisable packages, live pricing, and a homefood built around your guests.</p>
+        <a href="catering.html" class="btn btn-secondary">Explore Catering</a>
+      </div>
+    </div>
+  </section>
+
+
+
+  <footer>
+    <div class="footer-grid">
+      <div>
+        <a href="home.html" class="logo"><i class="fa-solid fa-bowl-food"></i>HomeTaste Kitchen</a>
+        <p>Homemade meals, cloud-kitchen convenience, and premium catering — cooked fresh daily with love, from our kitchen to your table.</p>
+        <div class="footer-social">
+          <a href="#"><i class="fa-brands fa-instagram"></i></a>
+          <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="#"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+      </div>
+      <div>
+        <h4>Quick Links</h4>
+        <ul>
+          <li><a href="homefood.html">Our homefood</a></li>
+          <li><a href="catering.html">Catering</a></li>
+          <li><a href="gallery.html">Gallery</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="booking.html">Book Order</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <li><a href="admin.html">Admin Login</a></li>
+          <li><a href="#">Careers</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Get In Touch</h4>
+        <ul>
+          <li><i class="fa-solid fa-phone"></i>&nbsp; +91 82703 64143</li>
+          <li><i class="fa-solid fa-envelope"></i>&nbsp; hello@hometastekitchen.in</li>
+          <li><i class="fa-solid fa-location-dot"></i>&nbsp; 24 Green Avenue, Chennai</li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-bottom">© 2026 HomeTaste Kitchen. All rights reserved. Made with love in our home kitchen.</p>
+  </footer>
+  <a href=" https://wa.me/8270364143" class="whatsapp-float" target="_blank" aria-label="WhatsApp"><i class="fa-brands fa-whatsapp"></i> </a>
+ <script>
+document.addEventListener('DOMContentLoaded', () => {
+  initMobileNav();
+  initScrollReveal();
+  initFeaturedDishes();
+});
+
+/* ---------- Mobile Navigation ---------- */
+function initMobileNav() {
+  const btn = document.querySelector('.hamburger');
+  const panel = document.querySelector('.mobile-panel');
+  const overlay = document.querySelector('.overlay');
+  if (!btn || !panel) return;
+
+  const toggle = (open) => {
+    panel.classList.toggle('open', open);
+    overlay.classList.toggle('open', open);
+  };
+
+  btn.addEventListener('click', () => toggle(!panel.classList.contains('open')));
+  overlay.addEventListener('click', () => toggle(false));
+  panel.querySelectorAll('a').forEach(a => a.addEventListener('click', () => toggle(false)));
+}
+
+/* ---------- Scroll Reveal Animations ---------- */
+function initScrollReveal() {
+  const items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('show');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  items.forEach(i => io.observe(i));
+}
+
+/* ---------- Featured Dishes Quick Add Action ---------- */
+function initFeaturedDishes() {
+  const addButtons = document.querySelectorAll('.dish-card .add-cart');
+  if (!addButtons.length) return;
+
+  addButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      const dishCard = btn.closest('.dish-card');
+      const dishName = dishCard?.querySelector('h4')?.textContent || 'Item';
+      
+      showToast(`Selected ${dishName}! Redirecting to menu...`);
+    });
+  });
+}
+
+/* ---------- Helper: Toast Notification ---------- */
+function showToast(message) {
+  let toast = document.querySelector('.toast-notification');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.className = 'toast-notification';
+    toast.style.cssText = `
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: #2b1d0c;
+      color: #ffffff;
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+      z-index: 1000;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    `;
+    document.body.appendChild(toast);
+  }
+
+  toast.textContent = message;
+  requestAnimationFrame(() => {
+    toast.style.opacity = '1';
+    toast.style.transform = 'translateY(0)';
+  });
+
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(12px)';
+  }, 2200);
+}
+</script>
+
+</body>
+</html>
